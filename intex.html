@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hectares et Patrimoine - Spécialiste de l'immobilier équestre en France">
+    <title>Hectares et Patrimoine - Immobilier Équestre</title>
+    
+    <!-- CSS externe -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏇</text></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-wrapper">
+                <div class="logo-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>Hectares & Patrimoine</h1>
+                    <p>Immobilier équestre d'exception</p>
+                </div>
+            </div>
+
+            <nav class="nav-desktop">
+                <a href="#proprietes">Nos propriétés</a>
+                <a href="#exclusivite">Exclusivité</a>
+                <a href="#equipe">Notre équipe</a>
+                <a href="#conseils">Conseils</a>
+                <button class="btn-primary" onclick="scrollToContact()">Contact</button>
+            </nav>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu mobile">
+                <svg id="menuIcon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="hidden" style="padding: 1rem 1.5rem; border-top: 1px solid #d1fae5;">
+            <nav style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <a href="#proprietes" style="display: block; padding: 0.5rem 0; color: #374151; text-decoration: none;">Nos propriétés</a>
+                <a href="#exclusivite" style="display: block; padding: 0.5rem 0; color: #374151; text-decoration: none;">Exclusivité</a>
+                <a href="#equipe" style="display: block; padding: 0.5rem 0; color: #374151; text-decoration: none;">Notre équipe</a>
+                <a href="#conseils" style="display: block; padding: 0.5rem 0; color: #374151; text-decoration: none;">Conseils</a>
+                <button class="btn-primary" style="width: 100%; margin-top: 0.5rem;">Contact</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <img 
+            src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80" 
+            alt="Propriété équestre"
+            class="hero-image"
+        />
+        <div class="hero-content">
+            <div class="hero-inner">
+                <h2 class="hero-title">Votre Propriété Équestre</h2>
+                <p class="hero-subtitle">Spécialiste de l'immobilier équestre en France</p>
+
+                <!-- Search Box -->
+                <div class="search-box">
+                    <div class="search-tabs">
+                        <button onclick="setActiveTab('vente')" id="btnVente" class="search-tab active">
+                            Acheter
+                        </button>
+                        <button onclick="setActiveTab('sold')" id="btnSold" class="search-tab">
+                            Biens vendus
+                        </button>
+                    </div>
+
+                    <div class="search-grid">
+                        <input
+                            type="text"
+                            id="searchLocation"
+                            placeholder="📍 Localisation"
+                            oninput="filterProperties()"
+                            class="search-input"
+                        />
+                        
+                        <input
+                            type="number"
+                            id="searchSurface"
+                            placeholder="📐 Surface min (m²)"
+                            oninput="filterProperties()"
+                            class="search-input"
+                        />
+                        
+                        <input
+                            type="number"
+                            id="searchBudget"
+                            placeholder="💰 Budget max (€)"
+                            oninput="filterProperties()"
+                            class="search-input"
+                        />
+                    </div>
+
+                    <button onclick="toggleAdvanced()" class="advanced-toggle">
+                        <span id="advancedText">Plus de critères ▼</span>
+                    </button>
+
+                    <div id="advancedSearch" class="advanced-search">
+                        <input
+                            type="number"
+                            id="searchLandMin"
+                            placeholder="🌾 Terrain min (hectares)"
+                            oninput="filterProperties()"
+                            class="search-input"
+                        />
+                        <input
+                            type="number"
+                            id="searchLandMax"
+                            placeholder="🌾 Terrain max (hectares)"
+                            oninput="filterProperties()"
+                            class="search-input"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Grid -->
+    <section class="properties-section" id="proprietes">
+        <div class="properties-header">
+            <div>
+                <h3 class="properties-title" id="sectionTitle">
+                    Nos propriétés équestres à vendre
+                </h3>
+                <p class="properties-count" id="propertyCount">6 propriété(s) disponible(s)</p>
+            </div>
+        </div>
+
+        <div id="propertiesGrid" class="properties-grid">
+            <!-- Properties will be injected here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h3 class="cta-title">
+                Vous souhaitez vendre votre propriété équestre ?
+            </h3>
+            <p class="cta-description">
+                Bénéficiez de notre expertise et de notre réseau pour valoriser votre bien au meilleur prix
+            </p>
+            <div class="cta-buttons">
+                <button class="btn-secondary">Estimer mon bien</button>
+                <button class="btn-tertiary">Créer une alerte</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <div class="footer-brand-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                            </svg>
+                        </div>
+                        <h4>Hectares & Patrimoine</h4>
+                    </div>
+                    <p class="footer-description">
+                        Spécialiste de l'immobilier équestre depuis plus de 10 ans. Nous vous accompagnons dans tous vos projets.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="footer-title">Nos services</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Acheter</a></li>
+                        <li><a href="#">Vendre</a></li>
+                        <li><a href="#">Estimer</a></li>
+                        <li><a href="#">Financement</a></li>
+                        <li><a href="#">Nos conseils</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="footer-title">L'agence</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Notre équipe</a></li>
+                        <li><a href="#">Nos ambassadeurs</a></li>
+                        <li><a href="#">Pourquoi l'exclusivité</a></li>
+                        <li><a href="#">Nos honoraires</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="footer-title">Contact</h5>
+                    <ul class="footer-links">
+                        <li>📍 4 Grand Rue<br>44118 La Chevrolière</li>
+                        <li>📞 02 40 00 00 00</li>
+                        <li>✉️ contact@hectaresetpatrimoine.fr</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Hectares et Patrimoine. Tous droits réservés.</p>
+                <div class="footer-legal">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Confidentialité</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
