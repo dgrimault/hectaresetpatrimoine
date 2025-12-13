@@ -1,5 +1,5 @@
 /* ========================================
-   Hectares & Patrimoine - Styles personnalisés
+   Hectares & Patrimoine - Styles personnalisés (Bordeaux & Or)
    ======================================== */
 
 /* Reset & Base */
@@ -10,29 +10,25 @@
 }
 
 :root {
-    /* Couleurs principales */
-    --emerald-50: #ecfdf5;
-    --emerald-100: #781C1B;
-    --emerald-600: #059669;
-    --emerald-700: #047857;
-    --emerald-800: #065f46;
-    --emerald-900: #064e3b;
+    /* Couleurs principales (Bordeaux/Rouge pour l'identité) */
+    --color-primary: #781C1B;    /* Votre couleur principale : Bordeaux */
+    --color-primary-dark: #5e1615; /* Une nuance plus foncée (utilisée pour les hover) */
+    --color-primary-light: #942524; /* Une nuance plus claire */
     
-    --teal-600: #0d9488;
-    --teal-700: #0f766e;
+    /* Couleurs secondaires (Or/Jaune pour l'accentuation) */
+    --color-secondary: #BC9631;  /* Votre couleur secondaire : Or */
+    --color-secondary-light: #EFD983; /* Votre couleur tertiaire : Jaune clair (utilisée pour les fonds clairs) */
     
+    /* Couleurs neutres (pour le fond et le texte) */
     --gray-50: #f9fafb;
     --gray-100: #f3f4f6;
     --gray-400: #9ca3af;
     --gray-600: #4b5563;
     --gray-700: #374151;
     --gray-800: #1f2937;
-    --gray-900: #111827;
+    --gray-900: #111827; /* Noir */
     
-    --amber-500: #f59e0b;
-    --orange-600: #ea580c;
-    
-    --red-500: #ef4444;
+    --red-500: #ef4444; /* Reste pour les coeurs/erreurs */
     
     /* Espacements */
     --spacing-xs: 0.25rem;
@@ -65,35 +61,15 @@ body {
     font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.5;
     color: var(--gray-900);
-    background: linear-gradient(to bottom right, var(--emerald-50), white, #ccfbf1);
+    /* Utilisation des couleurs Or/Jaune clair et Gris clair pour le fond */
+    background: linear-gradient(to bottom right, var(--color-secondary-light), white, var(--gray-100));
     min-height: 100vh;
 }
 
 /* ========================================
    HEADER & NAVIGATION
    ======================================== */
-/* Styles pour le menu mobile (à ajouter à votre fichier styles.css) */
-#mobileMenu {
-    padding: var(--spacing-md) var(--spacing-lg); /* Utilisation des variables */
-    border-top: 1px solid var(--emerald-100);
-}
 
-#mobileMenu a {
-    display: block;
-    padding: var(--spacing-sm) 0;
-    color: var(--gray-700);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-}
-
-#mobileMenu a:hover {
-    color: var(--emerald-600);
-}
-
-#mobileMenu .btn-primary {
-    width: 100%;
-    margin-top: var(--spacing-sm);
-}
 .header {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
@@ -101,7 +77,8 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid var(--emerald-100);
+    /* Utilisation du Bordeaux clair pour la bordure */
+    border-bottom: 1px solid var(--color-primary-light);
 }
 
 .header-container {
@@ -120,7 +97,8 @@ body {
 }
 
 .logo-icon {
-    background: linear-gradient(to bottom right, var(--emerald-600), var(--teal-700));
+    /* Utilisation du Bordeaux (foncé à clair) pour l'icône */
+    background: linear-gradient(to bottom right, var(--color-primary), var(--color-primary-light));
     padding: 0.5rem;
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-lg);
@@ -135,7 +113,8 @@ body {
 .logo-text h1 {
     font-size: 1.5rem;
     font-weight: 700;
-    background: linear-gradient(to right, var(--emerald-700), var(--teal-600));
+    /* Utilisation du Bordeaux (foncé à clair) pour le texte en dégradé */
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -160,11 +139,13 @@ body {
 }
 
 .nav-desktop a:hover {
-    color: var(--emerald-600);
+    /* Utilisation du Bordeaux pour le survol */
+    color: var(--color-primary);
 }
 
 .btn-primary {
-    background: linear-gradient(to right, var(--emerald-600), var(--teal-600));
+    /* Utilisation du Bordeaux pour le bouton principal */
+    background: linear-gradient(to right, var(--color-primary), var(--color-primary-light));
     color: white;
     padding: 0.5rem 1.5rem;
     border-radius: var(--radius-md);
@@ -176,7 +157,8 @@ body {
 }
 
 .btn-primary:hover {
-    background: linear-gradient(to right, var(--emerald-700), var(--teal-700));
+    /* Utilisation du Bordeaux foncé pour le survol */
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
@@ -192,7 +174,8 @@ body {
 }
 
 .mobile-menu-btn:hover {
-    background: var(--emerald-50);
+    /* Utilisation du gris clair pour le survol */
+    background: var(--gray-100);
 }
 
 @media (min-width: 1024px) {
@@ -202,6 +185,37 @@ body {
     .mobile-menu-btn {
         display: none;
     }
+}
+
+/* Styles pour le menu mobile (S'applique aux écrans étroits) */
+#mobileMenu {
+    padding: var(--spacing-md) var(--spacing-lg);
+    /* Utilisation du Bordeaux clair pour le séparateur */
+    border-top: 1px solid var(--color-primary-light);
+}
+
+#mobileMenu nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+#mobileMenu a {
+    display: block;
+    padding: var(--spacing-sm) 0;
+    color: var(--gray-700);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+#mobileMenu a:hover {
+    /* Utilisation du Bordeaux pour le survol */
+    color: var(--color-primary);
+}
+
+#mobileMenu .btn-primary {
+    width: 100%;
+    margin-top: var(--spacing-sm);
 }
 
 /* ========================================
@@ -217,7 +231,8 @@ body {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(6, 78, 59, 0.8), rgba(15, 118, 110, 0.7));
+    /* Dégradé de Bordeaux foncé à Or semi-transparent */
+    background: linear-gradient(to right, rgba(120, 28, 27, 0.8), rgba(188, 150, 49, 0.7));
     z-index: 10;
 }
 
@@ -296,7 +311,8 @@ body {
 }
 
 .search-tab.active {
-    background: linear-gradient(to right, var(--emerald-600), var(--teal-600));
+    /* Utilisation du Bordeaux pour l'onglet actif */
+    background: linear-gradient(to right, var(--color-primary), var(--color-primary-light));
     color: white;
     box-shadow: var(--shadow-lg);
 }
@@ -323,13 +339,15 @@ body {
 }
 
 .search-input:focus {
-    border-color: var(--emerald-600);
-    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+    /* Utilisation du Bordeaux pour le focus */
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(120, 28, 27, 0.1); /* Ombre Bordeaux semi-transparent */
 }
 
 .advanced-toggle {
     margin-top: 1rem;
-    color: var(--emerald-600);
+    /* Utilisation du Bordeaux */
+    color: var(--color-primary);
     font-weight: 500;
     background: none;
     border: none;
@@ -342,7 +360,8 @@ body {
 }
 
 .advanced-toggle:hover {
-    color: var(--emerald-700);
+    /* Utilisation du Bordeaux foncé pour le survol */
+    color: var(--color-primary-dark);
 }
 
 .advanced-search {
@@ -448,7 +467,8 @@ body {
     position: absolute;
     top: 1rem;
     left: 1rem;
-    background: linear-gradient(to right, var(--amber-500), var(--orange-600));
+    /* Dégradé Or à Bordeaux pour le badge Exclusif */
+    background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 9999px;
@@ -515,7 +535,8 @@ body {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 9999px;
-    border: 2px solid var(--emerald-100);
+    /* Bordure Bordeaux */
+    border: 2px solid var(--color-primary);
 }
 
 .agent-label {
@@ -574,7 +595,8 @@ body {
 .property-price {
     font-size: 1.5rem;
     font-weight: 700;
-    background: linear-gradient(to right, var(--emerald-600), var(--teal-600));
+    /* Texte en dégradé de Bordeaux */
+    background: linear-gradient(to right, var(--color-primary), var(--color-primary-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -594,7 +616,8 @@ body {
 .btn-view-property {
     width: 100%;
     margin-top: 1rem;
-    background: linear-gradient(to right, var(--emerald-600), var(--teal-600));
+    /* Bouton en dégradé de Bordeaux */
+    background: linear-gradient(to right, var(--color-primary), var(--color-primary-light));
     color: white;
     padding: 0.75rem;
     border-radius: var(--radius-md);
@@ -606,7 +629,8 @@ body {
 }
 
 .btn-view-property:hover {
-    background: linear-gradient(to right, var(--emerald-700), var(--teal-700));
+    /* Survol en Bordeaux foncé */
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
 }
 
 /* ========================================
@@ -614,7 +638,8 @@ body {
    ======================================== */
 
 .cta-section {
-    background: linear-gradient(to right, var(--emerald-700), var(--teal-600));
+    /* Section CTA en Bordeaux */
+    background: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
     padding: 5rem 1.5rem;
     text-align: center;
 }
@@ -650,7 +675,8 @@ body {
 
 .btn-secondary {
     background: white;
-    color: var(--emerald-700);
+    /* Texte en Bordeaux foncé */
+    color: var(--color-primary-dark);
     padding: 1rem 2rem;
     border-radius: var(--radius-md);
     border: none;
@@ -661,11 +687,13 @@ body {
 }
 
 .btn-secondary:hover {
-    background: var(--emerald-50);
+    /* Survol en Jaune clair/Or */
+    background: var(--color-secondary-light);
 }
 
 .btn-tertiary {
-    background: var(--emerald-800);
+    /* Bouton tertiaire en Or */
+    background: var(--color-secondary);
     color: white;
     padding: 1rem 2rem;
     border-radius: var(--radius-md);
@@ -677,7 +705,9 @@ body {
 }
 
 .btn-tertiary:hover {
-    background: var(--emerald-900);
+    /* Survol en Or/Bordeaux */
+    background: var(--color-secondary); 
+    opacity: 0.9;
 }
 
 /* ========================================
@@ -716,7 +746,8 @@ body {
 }
 
 .footer-brand-icon {
-    background: linear-gradient(to bottom right, var(--emerald-600), var(--teal-700));
+    /* Icône en dégradé de Bordeaux */
+    background: linear-gradient(to bottom right, var(--color-primary), var(--color-primary-light));
     padding: 0.5rem;
     border-radius: var(--radius-xl);
 }
@@ -753,7 +784,8 @@ body {
 }
 
 .footer-links a:hover {
-    color: #10b981;
+    /* Survol des liens en Or */
+    color: var(--color-secondary);
 }
 
 .footer-bottom {
@@ -786,7 +818,8 @@ body {
 }
 
 .footer-legal a:hover {
-    color: #10b981;
+    /* Survol des liens légaux en Or */
+    color: var(--color-secondary);
 }
 
 /* ========================================
