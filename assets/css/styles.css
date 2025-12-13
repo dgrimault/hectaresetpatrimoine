@@ -72,7 +72,28 @@ body {
 /* ========================================
    HEADER & NAVIGATION
    ======================================== */
+/* Styles pour le menu mobile (à ajouter à votre fichier styles.css) */
+#mobileMenu {
+    padding: var(--spacing-md) var(--spacing-lg); /* Utilisation des variables */
+    border-top: 1px solid var(--emerald-100);
+}
 
+#mobileMenu a {
+    display: block;
+    padding: var(--spacing-sm) 0;
+    color: var(--gray-700);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+#mobileMenu a:hover {
+    color: var(--emerald-600);
+}
+
+#mobileMenu .btn-primary {
+    width: 100%;
+    margin-top: var(--spacing-sm);
+}
 .header {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
