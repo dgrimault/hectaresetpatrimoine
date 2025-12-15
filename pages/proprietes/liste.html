@@ -1,1 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propriétés Équestres à Vendre - Hectares et Patrimoine</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css"> 
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="../../index.html">Hectares et Patrimoine</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">Accueil</a></li>
+                    <li class="active"><a href="liste.html">Nos Biens</a></li>
+                    <li><a href="../agence/equipe.html">L'Agence</a></li>
+                    <li><a href="../services/estimation.html">Services</a></li>
+                    <li><a href="../blog/index.html">Blog</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="liste-hero" class="container">
+            <h2>Nos Propriétés Équestres Actuellement en Vente</h2>
+            <p class="lead">Découvrez une sélection unique de haras, centres équestres, et domaines ruraux avec installations hippiques. Votre projet commence ici.</p>
+        </section>
+
+        <section id="filtres-recherche" class="container">
+            <h3>Affiner Votre Recherche</h3>
+            <form id="filtre-form" class="filtre-grid">
+                
+                <div class="form-group">
+                    <label for="region">Région</label>
+                    <select id="region" name="region">
+                        <option value="">Toutes les régions</option>
+                        <option value="normandie">Normandie</option>
+                        <option value="nouvelle-aquitaine">Nouvelle-Aquitaine</option>
+                        <option value="paca">PACA</option>
+                        </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="budget">Budget Max (€)</label>
+                    <select id="budget" name="budget">
+                        <option value="">Tous budgets</option>
+                        <option value="500000">Jusqu'à 500 000 €</option>
+                        <option value="1000000">Jusqu'à 1 000 000 €</option>
+                        <option value="2000000">Jusqu'à 2 000 000 €</option>
+                        <option value="plus">2 000 000 € et +</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="min_boxes">Boxes Min.</label>
+                    <input type="number" id="min_boxes" name="min_boxes" min="0" placeholder="Min. 5 boxes">
+                </div>
+
+                <div class="form-group">
+                    <label for="min_hectares">Terres Min. (Ha)</label>
+                    <input type="number" id="min_hectares" name="min_hectares" min="0" step="0.1" placeholder="Min. 2 Ha">
+                </div>
+                
+                <div class="form-group">
+                    <label for="installations">Installations</label>
+                    <select id="installations" name="installations">
+                        <option value="">Toutes installations</option>
+                        <option value="manège">Manège couvert</option>
+                        <option value="carriere">Carrière olympique</option>
+                        <option value="piste">Piste de galop</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Rechercher</button>
+                <button type="reset" class="btn btn-secondary-outline">Réinitialiser</button>
+            </form>
+        </section>
+
+        <section id="resultats-proprietes" class="container">
+            <p class="compteur-resultats">Affichage de 12 résultats sur 35</p>
+
+            <div class="proprietes-grid">
+                <article class="propriete-card">
+                    <figure class="propriete-image-container">
+                        <img src="../../assets/images/proprietes/propriete-1.jpg" alt="Photo de la Propriété Les Écuries de l'Aube">
+                        <span class="tag exclusivite">Exclusivité</span>
+                    </figure>
+                    <div class="propriete-details">
+                        <h4 class="propriete-title"><a href="detail.html">Les Écuries de l'Aube</a></h4>
+                        <p class="propriete-localisation">Normandie (14)</p>
+                        <ul class="propriete-caracteristiques">
+                            <li>**15** Boxes</li>
+                            <li>**12.5** Ha de prairies</li>
+                            <li>**Manège** 20x40</li>
+                        </ul>
+                        <p class="propriete-prix">1 250 000 €</p>
+                        <a href="detail.html" class="btn btn-tertiary">Voir la fiche</a>
+                    </div>
+                </article>
+
+                <article class="propriete-card">
+                    <figure class="propriete-image-container">
+                        <img src="../../assets/images/proprietes/propriete-2.jpg" alt="Photo du Haras du Val d'Or">
+                    </figure>
+                    <div class="propriete-details">
+                        <h4 class="propriete-title"><a href="detail.html">Haras du Val d'Or</a></h4>
+                        <p class="propriete-localisation">Nouvelle-Aquitaine (33)</p>
+                        <ul class="propriete-caracteristiques">
+                            <li>**30** Boxes</li>
+                            <li>**45** Ha de terres</li>
+                            <li>**Carrière** 80x40</li>
+                        </ul>
+                        <p class="propriete-prix">3 800 000 €</p>
+                        <a href="detail.html" class="btn btn-tertiary">Voir la fiche</a>
+                    </div>
+                </article>
+
+                <article class="propriete-card">
+                    <figure class="propriete-image-container">
+                        <img src="../../assets/images/proprietes/propriete-3.jpg" alt="Photo du Centre Équestre de la Forêt">
+                        <span class="tag nouveau">Nouveau</span>
+                    </figure>
+                    <div class="propriete-details">
+                        <h4 class="propriete-title"><a href="detail.html">Centre Équestre de la Forêt</a></h4>
+                        <p class="propriete-localisation">Grand Est (54)</p>
+                        <ul class="propriete-caracteristiques">
+                            <li>**20** Boxes</li>
+                            <li>**5** Ha de paddocks</li>
+                            <li>**Club House**</li>
+                        </ul>
+                        <p class="propriete-prix">Prix sur Demande</p>
+                        <a href="detail.html" class="btn btn-tertiary">Voir la fiche</a>
+                    </div>
+                </article>
+
+                </div>
+            
+            <div class="pagination">
+                <a href="#" class="page-link disabled">Précédent</a>
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link">Suivant</a>
+            </div>
+            
+            <div id="cta-alerte" class="cta-section small-cta">
+                <h3 class="cta-title">Pas Trouvé Votre Bonheur ?</h3>
+                <p class="cta-description">Créez votre alerte personnalisée et recevez nos nouveautés en avant-première.</p>
+                <a href="../services/alerte.html" class="btn btn-secondary">Créer Mon Alerte</a>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Hectares et Patrimoine. Tous droits réservés.</p>
+            <ul>
+                <li><a href="../legal/mentions-legales.html">Mentions Légales</a></li>
+                <li><a href="../legal/confidentialite.html">Politique de Confidentialité</a></li>
+                <li><a href="../legal/cookies.html">Politique de Cookies</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="../../assets/js/script.js"></script>
+    <script src="../../assets/js/filtres.js"></script> 
+</body>
+</html>
 
