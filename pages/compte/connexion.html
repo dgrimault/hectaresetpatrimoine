@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion à Mon Compte - Hectares et Patrimoine</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css"> 
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="../../index.html">Hectares et Patrimoine</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">Accueil</a></li>
+                    <li><a href="../proprietes/liste.html">Nos Biens</a></li>
+                    <li><a href="../agence/equipe.html">L'Agence</a></li>
+                    <li><a href="../services/estimation.html">Services</a></li>
+                    <li><a href="../blog/index.html">Blog</a></li>
+                    <li class="active"><a href="connexion.html">Mon Compte</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="connexion" class="container form-centered">
+            <h2>Accéder à Mon Espace Personnel</h2>
+            <p class="lead">Connectez-vous pour gérer vos alertes, vos biens favoris, ou accéder à votre tableau de bord Ambassadeur.</p>
+
+            <div class="form-card">
+                <h3>Connexion</h3>
+                <form action="[URL_DE_TRAITEMENT_CONNEXION]" method="POST" id="login-form">
+                    
+                    <div class="form-group">
+                        <label for="email">Adresse E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Mot de Passe *</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <a href="mot-de-passe-oublie.html" class="link-secondary">Mot de passe oublié ?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full-width">Se Connecter</button>
+                </form>
+
+                <div class="form-footer">
+                    <p>Pas encore de compte ?</p>
+                    <a href="inscription.html" class="btn btn-secondary-outline btn-full-width">Créer un compte</a>
+                </div>
+            </div>
+            
+        </section>
+        
+        <section id="espace-ambassadeur-cta" class="cta-section small-cta">
+            <div class="container">
+                <h3 class="cta-title">Espace Ambassadeur</h3>
+                <p class="cta-description">Si vous êtes déjà Ambassadeur, connectez-vous ci-dessus. Si vous souhaitez en savoir plus sur notre réseau :</p>
+                <a href="../agence/ambassadeurs.html" class="btn btn-tertiary">Découvrir le Réseau</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Hectares et Patrimoine. Tous droits réservés.</p>
+            <ul>
+                <li><a href="../legal/mentions-legales.html">Mentions Légales</a></li>
+                <li><a href="../legal/confidentialite.html">Politique de Confidentialité</a></li>
+                <li><a href="../legal/cookies.html">Politique de Cookies</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="../../assets/js/script.js"></script>
+</body>
+</html>
 
