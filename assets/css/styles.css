@@ -835,3 +835,627 @@ body {
     margin: 0 auto;
     padding: 0 1.5rem;
 }
+/* ========================================
+   GLOBAL LAYOUT & TYPOGRAPHY
+   (Applique aux pages de contenu)
+   ======================================== */
+
+main {
+    padding: 4rem 0;
+    min-height: 70vh;
+}
+
+section {
+    padding: var(--spacing-2xl) 0;
+}
+
+section:nth-child(even) {
+    background-color: var(--gray-50);
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+    color: var(--color-primary-dark);
+}
+
+h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    color: var(--gray-800);
+}
+
+h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-secondary);
+}
+
+.lead {
+    font-size: 1.25rem;
+    color: var(--gray-600);
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    max-width: 60rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.two-columns-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+}
+
+@media (min-width: 1024px) {
+    .two-columns-layout {
+        grid-template-columns: 2fr 1fr; /* 2/3 pour le contenu, 1/3 pour la sidebar/contact */
+    }
+}
+
+/* ========================================
+   BUTTONS & FORMS (Général)
+   ======================================== */
+
+/* Ajout des styles des boutons utilisés dans les formulaires/CTA */
+.btn-secondary-outline {
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-secondary-outline:hover {
+    background: var(--color-primary);
+    color: white;
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: var(--spacing-xs);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--gray-400);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 2px rgba(188, 150, 49, 0.2); /* Ombre Or semi-transparent */
+}
+
+.form-group-grid {
+    display: grid;
+    gap: var(--spacing-lg);
+}
+
+.form-group-grid.two-cols {
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+    .form-group-grid.two-cols {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    font-size: 0.875rem;
+}
+
+.checkbox-group input {
+    width: auto;
+    margin-top: 4px; /* Alignement avec le texte */
+}
+
+.cta-formulaire {
+    padding: var(--spacing-2xl) 0;
+    background-color: var(--color-secondary-light); /* Utilisation du Jaune clair/Or pour un fond de formulaire */
+}
+
+/* ========================================
+   PAGE SERVICES (Estimation, Financement, Alerte)
+   ======================================== */
+
+.etapes-estimation-grid,
+.defis-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+}
+
+@media (min-width: 768px) {
+    .etapes-estimation-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .defis-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.etape-card,
+.defis-card {
+    background: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: transform var(--transition-fast);
+}
+
+.etape-card:hover {
+    border-top: 4px solid var(--color-primary); /* Accent Bordeaux au survol */
+    transform: translateY(-4px);
+}
+
+.defis-card h4 {
+    /* Couleur Bordeaux */
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.etape-card p {
+    color: var(--gray-600);
+    margin-top: var(--spacing-sm);
+}
+
+/* ========================================
+   PAGE AGENCE (Équipe, Ambassadeurs, Exclusivité)
+   ======================================== */
+
+.equipe-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-2xl);
+}
+
+.membre-card {
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: var(--spacing-lg);
+}
+
+.membre-photo {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: var(--spacing-md);
+    /* Utilisation de l'Or pour la bordure/cadre subtil */
+    border-bottom: 5px solid var(--color-secondary); 
+}
+
+.membre-card h4 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.role {
+    color: var(--color-primary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+    display: block;
+}
+
+.bio-courte {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    padding: 0 var(--spacing-md);
+}
+
+/* Comparatif Exclusivité */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+}
+
+table th, table td {
+    padding: 1rem;
+    border: 1px solid var(--gray-200);
+    text-align: left;
+}
+
+table thead th {
+    /* Bordeaux pour l'en-tête du tableau */
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 700;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: var(--gray-50);
+}
+
+table tbody tr:hover {
+    background-color: var(--color-secondary-light); /* Or clair au survol */
+}
+
+/* ========================================
+   PAGE PROPRIÉTÉS (Detail)
+   ======================================== */
+
+.header-propriete {
+    margin-bottom: var(--spacing-xl);
+}
+
+.header-propriete h1 {
+    text-align: left;
+    color: var(--color-primary);
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.localisation, .prix {
+    font-size: 1.25rem;
+    color: var(--gray-700);
+    margin-bottom: var(--spacing-sm);
+}
+
+.prix {
+    /* Accent Or */
+    color: var(--color-secondary);
+    font-weight: 700;
+}
+
+.galerie-principale {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.image-principale {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-md);
+    box-shadow: var(--shadow-lg);
+}
+
+.vignettes-photos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 images par ligne */
+    gap: var(--spacing-md);
+}
+
+.vignettes-photos img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all var(--transition-fast);
+}
+
+.vignettes-photos img:hover {
+    border-color: var(--color-secondary);
+}
+
+.caracteristiques-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+    background-color: var(--gray-100);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+.caracteristique-item h5 {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    margin-bottom: var(--spacing-xs);
+}
+
+.caracteristique-item p {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.col-description ul {
+    list-style-type: '🐎 '; /* Puce symbolique, nécessite un bon support de police */
+    padding-left: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--gray-700);
+}
+
+.col-description ul li {
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Agent Sidebar */
+.contact-agent-box {
+    background: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border-top: 5px solid var(--color-secondary); /* Accent Or */
+    text-align: center;
+}
+
+.agent-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 9999px;
+    object-fit: cover;
+    margin-bottom: var(--spacing-md);
+}
+
+.agent-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.agent-role {
+    color: var(--gray-600);
+    margin-bottom: var(--spacing-lg);
+}
+
+.map-placeholder {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gray-100);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-lg);
+}
+
+.map-placeholder p {
+    color: var(--gray-600);
+    font-style: italic;
+    padding: var(--spacing-lg);
+}
+
+/* ========================================
+   PAGE BLOG (Index & Article)
+   ======================================== */
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+}
+
+@media (min-width: 768px) {
+    .articles-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.article-card {
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: transform var(--transition-fast);
+}
+
+.article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.featured-card {
+    grid-column: span 1;
+}
+
+@media (min-width: 1024px) {
+    /* Le premier article prend toute la largeur sur grand écran */
+    .articles-grid .article-card:first-child {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .articles-grid .featured-card .article-image-container {
+        height: 100%;
+    }
+    .articles-grid .featured-card img {
+        height: 100%;
+    }
+}
+
+.article-image-container {
+    height: 250px;
+    overflow: hidden;
+}
+
+.article-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.article-details {
+    padding: var(--spacing-lg);
+}
+
+.article-category {
+    display: inline-block;
+    /* Couleur de fond Bordeaux clair */
+    background-color: var(--color-primary-light);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.article-title {
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+}
+
+.article-date {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    display: block;
+}
+
+/* Style de la page Article */
+.article-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.article-header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--color-primary);
+}
+
+.article-meta {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+}
+
+.article-cover {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.article-cover img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.article-body {
+    max-width: 50rem;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--gray-800);
+}
+
+.article-body h2 {
+    font-size: 1.75rem;
+    color: var(--color-primary-dark);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+    text-align: left;
+}
+
+.article-body p {
+    margin-bottom: var(--spacing-lg);
+}
+
+.pullquote {
+    /* Accent Or pour la citation */
+    background-color: var(--color-secondary-light); 
+    border-left: 5px solid var(--color-secondary);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+    font-style: italic;
+    color: var(--gray-900);
+}
+
+/* Sidebar du Blog */
+.col-sidebar {
+    padding-top: var(--spacing-lg);
+}
+
+.sidebar-box {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-xl);
+    border-top: 3px solid var(--color-secondary);
+}
+
+.sidebar-box h4 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.sidebar-list {
+    list-style: none;
+}
+
+.sidebar-list li a {
+    display: block;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed var(--gray-200);
+}
+
+/* ========================================
+   PAGE CONNEXION / COMPTE
+   ======================================== */
+
+.form-centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.form-card {
+    max-width: 400px;
+    width: 100%;
+    background: white;
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-2xl);
+    text-align: center;
+    margin-top: var(--spacing-xl);
+}
+
+.form-card h3 {
+    text-align: center;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-xl);
+}
+
+.form-actions {
+    margin-top: var(--spacing-md);
+    text-align: right;
+    margin-bottom: var(--spacing-lg);
+}
