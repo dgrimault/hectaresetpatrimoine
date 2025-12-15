@@ -1,1 +1,161 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimation de Propriété Équestre - Hectares et Patrimoine</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css"> 
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="../../index.html">Hectares et Patrimoine</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">Accueil</a></li>
+                    <li><a href="../proprietes/liste.html">Nos Biens</a></li>
+                    <li><a href="../agence/equipe.html">L'Agence</a></li>
+                    <li><a href="estimation.html">Services</a></li>
+                    <li><a href="../blog/index.html">Blog</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="estimation-hero" class="container">
+            <h2>Estimez la Valeur de Votre Propriété Équestre</h2>
+            <p class="lead">Obtenez une évaluation précise et confidentielle de votre domaine, réalisée par nos experts spécialisés dans l'immobilier équestre.</p>
+            <p>Notre connaissance approfondie du marché des biens avec installations hippiques vous garantit une valorisation au juste prix.</p>
+        </section>
+
+        <section id="processus" class="container">
+            <h3>Notre Processus d'Estimation en 3 Étapes</h3>
+            <div class="process-steps">
+                <article class="step">
+                    <h4>1. La Demande en ligne</h4>
+                    <p>Remplissez le formulaire ci-dessous avec le maximum de détails sur votre bien et ses installations (surface, écuries, carrière, etc.).</p>
+                </article>
+                <article class="step">
+                    <h4>2. Analyse et Rendez-vous</h4>
+                    <p>Notre expert analyse les données du marché local et vous contacte sous 48h pour fixer un rendez-vous d'expertise sur place.</p>
+                </article>
+                <article class="step">
+                    <h4>3. Remise du Rapport</h4>
+                    <p>Vous recevez un rapport d'estimation détaillé et argumenté, basé sur une étude comparative et l'état réel de votre propriété.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="formulaire-estimation" class="container formulaire-section">
+            <h3>Formulaire de Demande d'Estimation Gratuite et Confidentielle</h3>
+            <form action="[URL_DE_TRAITEMENT_DU_FORMULAIRE]" method="POST" id="estimation-form">
+                
+                <fieldset>
+                    <legend>Informations sur le bien</legend>
+                    <div class="form-group-grid">
+                        <div class="form-group">
+                            <label for="adresse">Adresse complète du bien *</label>
+                            <input type="text" id="adresse" name="adresse" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ville">Ville *</label>
+                            <input type="text" id="ville" name="ville" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cp">Code Postal *</label>
+                            <input type="text" id="cp" name="cp" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Caractéristiques du Bien</legend>
+                    <div class="form-group-grid">
+                        <div class="form-group">
+                            <label for="surface_habitable">Surface Habitable (m²) *</label>
+                            <input type="number" id="surface_habitable" name="surface_habitable" required min="10">
+                        </div>
+                        <div class="form-group">
+                            <label for="terrain_hectares">Surface de Terrain (Hectares) *</label>
+                            <input type="number" id="terrain_hectares" name="terrain_hectares" required min="0.1" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="nb_boxes">Nombre de Boxes</label>
+                            <input type="number" id="nb_boxes" name="nb_boxes" min="0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="annee_construction">Année de construction</label>
+                            <input type="number" id="annee_construction" name="annee_construction" min="1500" max="2025">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="installations">Détail des installations équestres (carrière, manège, paddocks, etc.)</label>
+                        <textarea id="installations" name="installations" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="etat">État général du bien</label>
+                        <select id="etat" name="etat">
+                            <option value="tres_bon">Très Bon État / Rénové</option>
+                            <option value="bon">Bon état</option>
+                            <option value="a_rafraichir">À rafraîchir</option>
+                            <option value="a_renover">À rénover entièrement</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Vos Coordonnées</legend>
+                    <div class="form-group-grid two-cols">
+                        <div class="form-group">
+                            <label for="nom">Nom Complet *</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Adresse E-mail *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Numéro de Téléphone *</label>
+                            <input type="tel" id="telephone" name="telephone" required>
+                        </div>
+                        <div class="form-group">
+                             <label for="vendre_quand">Quand souhaitez-vous vendre ?</label>
+                             <select id="vendre_quand" name="vendre_quand">
+                                <option value="moins_3mois">Moins de 3 mois</option>
+                                <option value="3_6mois">Entre 3 et 6 mois</option>
+                                <option value="6_12mois">Entre 6 et 12 mois</option>
+                                <option value="plus_12mois">Plus de 12 mois / Information</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="consentement" name="consentement" required>
+                    <label for="consentement">J'accepte que Hectares et Patrimoine utilise ces données pour m'envoyer le rapport d'estimation. J'ai lu la <a href="../legal/confidentialite.html" target="_blank">Politique de Confidentialité</a>.</label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-large">Demander l'Estimation Gratuite</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Hectares et Patrimoine. Tous droits réservés.</p>
+            <ul>
+                <li><a href="../legal/mentions-legales.html">Mentions Légales</a></li>
+                <li><a href="../legal/confidentialite.html">Politique de Confidentialité</a></li>
+                <li><a href="../legal/cookies.html">Politique de Cookies</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="../../assets/js/script.js"></script>
+    <script src="../../assets/js/contact-form.js"></script>
+</body>
+</html>
