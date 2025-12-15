@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financement de Propriété Équestre - Hectares et Patrimoine</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css"> 
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="../../index.html">Hectares et Patrimoine</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">Accueil</a></li>
+                    <li><a href="../proprietes/liste.html">Nos Biens</a></li>
+                    <li><a href="../agence/equipe.html">L'Agence</a></li>
+                    <li class="active"><a href="estimation.html">Services</a></li>
+                    <li><a href="../blog/index.html">Blog</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="financement-hero" class="container">
+            <h2>Sécurisez le Financement de Votre Achat Équestre</h2>
+            <p class="lead">L'achat d'un domaine équestre nécessite une expertise financière spécifique. Nous vous accompagnons pour structurer votre financement, qu'il soit privé ou professionnel.</p>
+            <p>Grâce à nos partenaires courtiers spécialisés, obtenez les meilleures conditions pour concrétiser votre projet sans stress.</p>
+        </section>
+
+        <section id="defis-financement" class="container">
+            <h3>Les Enjeux Spécifiques du Financement Équestre</h3>
+            <div class="defis-grid">
+                <article class="defis-card">
+                    <h4>Nature Mixte du Bien</h4>
+                    <p>Gestion des parties privées (résidence) et professionnelles (écuries, terres agricoles). Nous aidons à optimiser la répartition du prêt.</p>
+                </article>
+                <article class="defis-card">
+                    <h4>Valeur des Installations</h4>
+                    <p>Les banques ne valorisent pas toujours les équipements spécialisés (carrières, manèges). Notre expertise sécurise l'évaluation de ces actifs.</p>
+                </article>
+                <article class="defis-card">
+                    <h4>Montage Juridique</h4>
+                    <p>Conseils sur les structures d'acquisition (SCI, SCEA) pour optimiser la fiscalité et la transmission de votre patrimoine.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact-courtier" class="cta-formulaire">
+            <div class="container">
+                <h3>Contactez notre Partenaire Financement</h3>
+                <p>Décrivez votre projet et laissez-nous vous mettre en relation avec un expert capable de répondre aux spécificités de l'immobilier équestre.</p>
+                
+                <form action="[URL_DE_TRAITEMENT_DU_FORMULAIRE]" method="POST" id="financement-form">
+                    <div class="form-group-grid two-cols">
+                        <div class="form-group">
+                            <label for="nom">Nom Complet *</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Adresse E-mail *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone *</label>
+                            <input type="tel" id="telephone" name="telephone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="montant_acquisition">Budget d'acquisition estimé (€) *</label>
+                            <input type="number" id="montant_acquisition" name="montant_acquisition" required min="50000">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="projet">Décrivez brièvement votre projet (type de bien recherché, usage, montant de l'apport, etc.) *</label>
+                        <textarea id="projet" name="projet" rows="5" required></textarea>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="consentement_partenaire" name="consentement_partenaire" required>
+                        <label for="consentement_partenaire">J'accepte que mes coordonnées soient transmises à notre partenaire courtier pour une prise de contact. J'ai lu la <a href="../legal/confidentialite.html" target="_blank">Politique de Confidentialité</a>.</label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-secondary btn-large">Être recontacté par un expert</button>
+                </form>
+            </div>
+        </section>
+        
+        <section id="faq-financement" class="container">
+            <h3>Questions Fréquentes</h3>
+            <div class="accordion">
+                <details>
+                    <summary>Est-ce que l'aide au financement est gratuite ?</summary>
+                    <p>La mise en relation avec notre partenaire est gratuite et sans engagement. Si vous décidez de contractualiser avec lui, des frais de courtage peuvent s'appliquer, selon les modalités convenues.</p>
+                </details>
+                <details>
+                    <summary>Le financement concerne-t-il uniquement les propriétés que vous vendez ?</summary>
+                    <p>Non, notre partenaire peut vous accompagner dans le financement de toute propriété équestre ou rurale, même si elle n'est pas listée chez Hectares et Patrimoine.</p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Hectares et Patrimoine. Tous droits réservés.</p>
+            <ul>
+                <li><a href="../legal/mentions-legales.html">Mentions Légales</a></li>
+                <li><a href="../legal/confidentialite.html">Politique de Confidentialité</a></li>
+                <li><a href="../legal/cookies.html">Politique de Cookies</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="../../assets/js/script.js"></script>
+    <script src="../../assets/js/contact-form.js"></script>
+</body>
+</html>
 
