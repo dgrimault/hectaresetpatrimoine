@@ -1,0 +1,632 @@
+<!--
+═══════════════════════════════════════════════════════════════════
+FICHIER : contact.html
+EMPLACEMENT : /Hectaresetpatrimoine/pages/
+DESCRIPTION : Page de contact avec formulaire, coordonnées et carte
+═══════════════════════════════════════════════════════════════════
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactez Hectares et Patrimoine - Spécialiste de l'immobilier équestre">
+    <title>Contact | Hectares et Patrimoine</title>
+    
+    <link rel="stylesheet" href="../styles.css">
+    
+    <style>
+        .contact-hero {
+            background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+            padding: 4rem 1.5rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-main {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        @media (min-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .contact-form-section {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-subtitle {
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            transition: all 0.15s;
+            outline: none;
+        }
+        
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            border-color: #059669;
+            box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.1);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .info-cards {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .info-card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+        
+        .info-card p {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-card a {
+            color: #059669;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+        
+        .info-card a:hover {
+            color: #047857;
+            text-decoration: underline;
+        }
+        
+        .map-section {
+            margin-top: 4rem;
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container {
+            height: 450px;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .hours-table {
+            margin-top: 1.5rem;
+        }
+        
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+        
+        .hours-day {
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .hours-time {
+            color: #6b7280;
+        }
+        
+        .hours-time.closed {
+            color: #ef4444;
+        }
+        
+        .team-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid #d1fae5;
+            margin: 0 auto 1rem;
+            object-fit: cover;
+        }
+        
+        .team-name {
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.25rem;
+        }
+        
+        .team-role {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+        }
+        
+        .alert-success {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+        }
+        
+        .alert-error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+        }
+        
+        .alert.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-wrapper">
+                <div class="logo-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>Hectares & Patrimoine</h1>
+                    <p>Immobilier équestre d'exception</p>
+                </div>
+            </div>
+
+            <nav class="nav-desktop">
+                <a href="../index.html">Nos propriétés</a>
+                <a href="exclusivite.html">Exclusivité</a>
+                <a href="equipe.html">Notre équipe</a>
+                <a href="conseils.html">Conseils</a>
+                <button class="btn-primary" onclick="window.location.href='contact.html'" style="background: #047857;">Contact</button>
+            </nav>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu mobile">
+                <svg id="menuIcon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="contact-hero">
+        <h1>Contactez-nous</h1>
+        <p>Notre équipe d'experts en immobilier équestre est à votre écoute pour répondre à toutes vos questions</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="contact-main">
+        <div class="contact-grid">
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+                <h2 class="section-title">Envoyez-nous un message</h2>
+                <p class="section-subtitle">Nous vous répondrons dans les plus brefs délais</p>
+                
+                <div id="alertSuccess" class="alert alert-success hidden">
+                    <span>✓</span>
+                    <div>
+                        <strong>Message envoyé avec succès !</strong><br>
+                        Nous vous répondrons dans les meilleurs délais.
+                    </div>
+                </div>
+                
+                <div id="alertError" class="alert alert-error hidden">
+                    <span>✗</span>
+                    <div>
+                        <strong>Erreur d'envoi</strong><br>
+                        Veuillez réessayer ou nous contacter par téléphone.
+                    </div>
+                </div>
+                
+                <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Prénom *</label>
+                            <input type="text" class="form-input" name="firstName" required placeholder="Jean">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Nom *</label>
+                            <input type="text" class="form-input" name="lastName" required placeholder="Dupont">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Email *</label>
+                            <input type="email" class="form-input" name="email" required placeholder="jean.dupont@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Téléphone</label>
+                            <input type="tel" class="form-input" name="phone" placeholder="06 12 34 56 78">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Sujet de votre demande *</label>
+                        <select class="form-select" name="subject" required>
+                            <option value="">Sélectionnez un sujet</option>
+                            <option value="info">Demande d'information sur une propriété</option>
+                            <option value="visite">Demande de visite</option>
+                            <option value="vente">Je souhaite vendre ma propriété</option>
+                            <option value="estimation">Demande d'estimation</option>
+                            <option value="financement">Question sur le financement</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Message *</label>
+                        <textarea class="form-textarea" name="message" required placeholder="Décrivez votre projet, vos besoins, vos questions..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="display: flex; align-items: start; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" required style="margin-top: 0.25rem;">
+                            <span style="font-size: 0.875rem; color: #6b7280;">
+                                J'accepte que mes données soient utilisées pour me recontacter concernant ma demande. 
+                                <a href="mentions-legales.html" style="color: #059669;">En savoir plus</a>
+                            </span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        Envoyer le message
+                    </button>
+                    
+                    <p style="font-size: 0.875rem; color: #9ca3af; margin-top: 1rem; text-align: center;">
+                        * Champs obligatoires
+                    </p>
+                </form>
+            </div>
+
+            <!-- Contact Info Cards -->
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-card-icon">📞</div>
+                    <h3>Par téléphone</h3>
+                    <p>Du lundi au vendredi<br>9h00 - 12h30 | 14h00 - 18h00</p>
+                    <p><a href="tel:0240000000">02 40 00 00 00</a></p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-card-icon">✉️</div>
+                    <h3>Par email</h3>
+                    <p>Nous vous répondons sous 24h</p>
+                    <p><a href="mailto:contact@hectaresetpatrimoine.fr">contact@hectaresetpatrimoine.fr</a></p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-card-icon">📍</div>
+                    <h3>Notre agence</h3>
+                    <p>4 Grand Rue<br>44118 La Chevrolière<br>France</p>
+                    <p><a href="#map">Voir sur la carte</a></p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-card-icon">⏰</div>
+                    <h3>Horaires d'ouverture</h3>
+                    <div class="hours-table">
+                        <div class="hours-row">
+                            <span class="hours-day">Lundi - Vendredi</span>
+                            <span class="hours-time">9h - 12h30 | 14h - 18h</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Samedi</span>
+                            <span class="hours-time">Sur rendez-vous</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Dimanche</span>
+                            <span class="hours-time closed">Fermé</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Preview -->
+        <div style="margin-top: 4rem; text-align: center;">
+            <h2 class="section-title">Notre équipe à votre service</h2>
+            <p class="section-subtitle">Des experts passionnés par l'immobilier équestre</p>
+            
+            <div class="team-preview">
+                <div class="team-member">
+                    <img src="https://i.pravatar.cc/150?img=1" alt="Nathalie GULLON-NEYRIN" class="team-avatar">
+                    <div class="team-name">Nathalie GULLON-NEYRIN</div>
+                    <div class="team-role">Directrice</div>
+                </div>
+                <div class="team-member">
+                    <img src="https://i.pravatar.cc/150?img=3" alt="Nicolas DALANCOURT" class="team-avatar">
+                    <div class="team-name">Nicolas DALANCOURT</div>
+                    <div class="team-role">Expert immobilier</div>
+                </div>
+                <div class="team-member">
+                    <img src="https://i.pravatar.cc/150?img=5" alt="Magali BADIER" class="team-avatar">
+                    <div class="team-name">Magali BADIER</div>
+                    <div class="team-role">Conseillère</div>
+                </div>
+                <div class="team-member">
+                    <img src="https://i.pravatar.cc/150?img=8" alt="Jérôme CHAILLEUX" class="team-avatar">
+                    <div class="team-name">Jérôme CHAILLEUX</div>
+                    <div class="team-role">Conseiller</div>
+                </div>
+            </div>
+            
+            <a href="equipe.html" style="display: inline-block; margin-top: 2rem; color: #059669; font-weight: 600; text-decoration: none;">
+                Découvrir toute l'équipe →
+            </a>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section" id="map">
+            <h2 class="section-title">Où nous trouver</h2>
+            <p class="section-subtitle">4 Grand Rue, 44118 La Chevrolière</p>
+            
+            <div class="map-container">
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    frameborder="0" 
+                    style="border:0"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-1.62%2C47.09%2C-1.58%2C47.11&layer=mapnik&marker=47.10%2C-1.60"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            
+            <div style="margin-top: 1.5rem; padding: 1.5rem; background: #f9fafb; border-radius: 0.75rem;">
+                <h4 style="font-weight: 600; margin-bottom: 0.75rem; color: #111827;">Comment venir ?</h4>
+                <ul style="color: #6b7280; line-height: 1.8;">
+                    <li>🚗 Depuis Nantes : 20 minutes par la D178</li>
+                    <li>🚂 Gare SNCF la plus proche : Nantes (15 km)</li>
+                    <li>🅿️ Parking gratuit devant l'agence</li>
+                    <li>♿ Accès PMR disponible</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <div class="footer-brand-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                            </svg>
+                        </div>
+                        <h4>Hectares & Patrimoine</h4>
+                    </div>
+                    <p class="footer-description">
+                        Spécialiste de l'immobilier équestre depuis plus de 10 ans.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="footer-title">Nos services</h5>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Acheter</a></li>
+                        <li><a href="estimation.html">Estimer</a></li>
+                        <li><a href="conseils.html">Nos conseils</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="footer-title">L'agence</h5>
+                    <ul class="footer-links">
+                        <li><a href="equipe.html">Notre équipe</a></li>
+                        <li><a href="exclusivite.html">Pourquoi l'exclusivité</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="footer-title">Contact</h5>
+                    <ul class="footer-links">
+                        <li>📍 4 Grand Rue<br>44118 La Chevrolière</li>
+                        <li>📞 02 40 00 00 00</li>
+                        <li>✉️ contact@hectaresetpatrimoine.fr</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Hectares et Patrimoine. Tous droits réservés.</p>
+                <div class="footer-legal">
+                    <a href="mentions-legales.html">Mentions légales</a>
+                    <a href="#">Confidentialité</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if (menu) menu.classList.toggle('hidden');
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            
+            // Simuler l'envoi (dans une vraie application, utiliser EmailJS ou un backend)
+            console.log('Form data:', data);
+            
+            // Afficher le message de succès
+            document.getElementById('alertSuccess').classList.remove('hidden');
+            document.getElementById('alertError').classList.add('hidden');
+            
+            // Réinitialiser le formulaire
+            form.reset();
+            
+            // Scroller vers le message de succès
+            document.getElementById('alertSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Masquer le message après 5 secondes
+            setTimeout(() => {
+                document.getElementById('alertSuccess').classList.add('hidden');
+            }, 5000);
+            
+            // Dans une vraie application :
+            /*
+            fetch('https://votre-backend.com/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                document.getElementById('alertSuccess').classList.remove('hidden');
+                form.reset();
+            })
+            .catch(error => {
+                document.getElementById('alertError').classList.remove('hidden');
+            });
+            */
+        }
+    </script>
+</body>
+</html>
