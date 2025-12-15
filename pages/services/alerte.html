@@ -1,1 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer une Alerte Propriété Équestre - Hectares et Patrimoine</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css"> 
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="../../index.html">Hectares et Patrimoine</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">Accueil</a></li>
+                    <li><a href="../proprietes/liste.html">Nos Biens</a></li>
+                    <li><a href="../agence/equipe.html">L'Agence</a></li>
+                    <li class="active"><a href="estimation.html">Services</a></li>
+                    <li><a href="../blog/index.html">Blog</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="alerte-hero" class="container">
+            <h2>Ne Manquez Plus Votre Propriété de Rêve</h2>
+            <p class="lead">Créez votre Alerte Propriété personnalisée et recevez en avant-première, directement par email, les domaines équestres correspondant exactement à vos critères.</p>
+            <p>Soyez le premier informé des nouvelles exclusivités d'Hectares et Patrimoine.</p>
+        </section>
+
+        <section id="formulaire-alerte" class="container formulaire-section">
+            <h3>Définissez Votre Alerte Immobilière</h3>
+            <form action="[URL_DE_TRAITEMENT_DE_L'ALERTE]" method="POST" id="alerte-form">
+                
+                <fieldset>
+                    <legend>Vos Critères de Recherche</legend>
+                    <div class="form-group-grid two-cols">
+                        <div class="form-group">
+                            <label for="type_bien">Type de bien recherché</label>
+                            <select id="type_bien" name="type_bien">
+                                <option value="domaine">Domaine Équestre</option>
+                                <option value="haras">Haras</option>
+                                <option value="propriete_rurale">Propriété Rurale avec Terres</option>
+                                <option value="centre_equestre">Centre Équestre Professionnel</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="region">Région(s) souhaitée(s)</label>
+                            <input type="text" id="region" name="region" placeholder="Ex: Normandie, Nouvelle-Aquitaine, Bretagne">
+                        </div>
+                        <div class="form-group">
+                            <label for="budget_min">Budget Minimum (€)</label>
+                            <input type="number" id="budget_min" name="budget_min" min="50000" placeholder="500 000">
+                        </div>
+                        <div class="form-group">
+                            <label for="budget_max">Budget Maximum (€) *</label>
+                            <input type="number" id="budget_max" name="budget_max" required min="100000" placeholder="1 500 000">
+                        </div>
+                        <div class="form-group">
+                            <label for="surface_terrain">Surface Terrain Minimum (Ha) *</label>
+                            <input type="number" id="surface_terrain" name="surface_terrain" required min="1" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="nb_boxes_min">Minimum de Boxes</label>
+                            <input type="number" id="nb_boxes_min" name="nb_boxes_min" min="0" value="0">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="autres_criteres">Autres critères importants (manège couvert, accès autoroutier, maison de gardien, etc.)</label>
+                        <textarea id="autres_criteres" name="autres_criteres" rows="3"></textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Vos Coordonnées pour Recevoir l'Alerte</legend>
+                    <div class="form-group-grid two-cols">
+                        <div class="form-group">
+                            <label for="nom">Votre Nom Complet *</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Adresse E-mail de l'Alerte *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="consentement" name="consentement" required>
+                    <label for="consentement">J'accepte de recevoir des alertes par e-mail et j'ai lu la <a href="../legal/confidentialite.html" target="_blank">Politique de Confidentialité</a>.</label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-large">Créer Mon Alerte et M'inscrire</button>
+            </form>
+        </section>
+
+        <section id="avantages" class="container">
+            <h3>Les Avantages de l'Alerte Hectares et Patrimoine</h3>
+            <div class="avantages-list">
+                <ul>
+                    <li>**Exclusivités :** Recevez nos mandats exclusifs avant leur diffusion sur les portails grand public.</li>
+                    <li>**Pertinence :** Des biens triés sur le volet, correspondant précisément à l'immobilier équestre.</li>
+                    <li>**Gain de temps :** Plus besoin de parcourir des dizaines de sites, l'information arrive à vous.</li>
+                    <li>**Confidentialité :** Vos données sont gérées conformément au RGPD.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Hectares et Patrimoine. Tous droits réservés.</p>
+            <ul>
+                <li><a href="../legal/mentions-legales.html">Mentions Légales</a></li>
+                <li><a href="../legal/confidentialite.html">Politique de Confidentialité</a></li>
+                <li><a href="../legal/cookies.html">Politique de Cookies</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="../../assets/js/script.js"></script>
+    <script src="../../assets/js/contact-form.js"></script> 
+</body>
+</html>
 
