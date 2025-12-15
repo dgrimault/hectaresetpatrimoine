@@ -1,26 +1,125 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <title>Contact Us - Hectare et Patrimoine</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactez Hectares et Patrimoine</title>
+    <link rel="stylesheet" href="../assets/css/styles.css"> 
 </head>
 <body>
-    <h1>Contact Us</h1>
-    <p>If you have any questions, feel free to reach out to us at:</p>
-    <ul>
-        <li>Email: contact@hectareetpatrimoine.fr</li>
-        <li>Phone: +33 1 23 45 67 89</li>
-        <li>Address: 123 Rue Exemple, 75001 Paris, France</li>
-    </ul>
-    <form action="/submit-contact" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+    <header>
+        <div class="container">
+            <h1><a href="../index.html">Hectares et Patrimoine</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li><a href="proprietes/liste.html">Nos Biens</a></li>
+                    <li><a href="agence/equipe.html">L'Agence</a></li>
+                    <li><a href="services/estimation.html">Services</a></li>
+                    <li><a href="blog/index.html">Blog</a></li>
+                    <li><a href="compte/connexion.html">Mon Compte</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+    <main>
+        <section id="contact-details" class="container">
+            <h2>Nous Contacter</h2>
+            <p class="lead">Que vous ayez une question sur un bien, besoin d'une estimation, ou que vous souhaitiez rejoindre notre réseau d'ambassadeurs, notre équipe est là pour vous répondre.</p>
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+            <div class="contact-info-grid">
+                
+                <article class="info-block">
+                    <h3>Adresse du Siège</h3>
+                    <p>
+                        Hectares et Patrimoine<br>
+                        [Votre Adresse Postale Complète]<br>
+                        [Code Postal et Ville]
+                    </p>
+                    <p>Venez nous rendre visite sur rendez-vous.</p>
+                </article>
 
-        <button type="submit">Send Message</button>
-    </form>
+                <article class="info-block">
+                    <h3>Informations de Contact</h3>
+                    <p>
+                        <strong>Téléphone :</strong> <a href="tel:[Votre_Numero]">[Votre Numéro de Téléphone]</a><br>
+                        <strong>Email :</strong> <a href="mailto:[Votre_Email]">[Votre Email Professionnel]</a>
+                    </p>
+                    <p>Nous répondons du Lundi au Vendredi, de 9h à 18h.</p>
+                </article>
+
+                <article class="info-block">
+                    <h3>Accès Rapide</h3>
+                    <ul>
+                        <li><a href="services/estimation.html">Demander une estimation gratuite</a></li>
+                        <li><a href="agence/ambassadeurs.html">Devenir Ambassadeur</a></li>
+                        <li><a href="proprietes/liste.html">Voir nos propriétés</a></li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact-form" class="container">
+            <h3>Envoyez-nous un Message</h3>
+            <form action="[URL_DE_TRAITEMENT_DU_FORMULAIRE]" method="POST" id="main-contact-form">
+                <div class="form-group">
+                    <label for="nom">Nom Complet *</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Adresse E-mail *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telephone">Téléphone</label>
+                    <input type="tel" id="telephone" name="telephone">
+                </div>
+                <div class="form-group">
+                    <label for="objet">Objet de votre demande *</label>
+                    <select id="objet" name="objet" required>
+                        <option value="">-- Choisissez un sujet --</option>
+                        <option value="information_generale">Information générale</option>
+                        <option value="estimation">Demande d'estimation</option>
+                        <option value="propriete">Question sur une propriété</option>
+                        <option value="partenariat">Partenariat/Ambassadeur</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Votre Message *</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="consentement" name="consentement" required>
+                    <label for="consentement">J'accepte la <a href="legal/confidentialite.html">Politique de Confidentialité</a> et autorise Hectares et Patrimoine à me contacter.</label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Envoyer le message</button>
+            </form>
+        </section>
+
+        <section id="map-location" class="container">
+            <h3>Où nous trouver ?</h3>
+            <p>Visualisez l'emplacement de notre siège principal :</p>
+            <div id="map-container" style="height: 400px; background-color: #f0f0f0; border: 1px solid #ddd;">
+                [Intégration iFrame de Google Maps ou zone pour la carte Leaflet gérée par map.js]
+            </div>
+            
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Hectares et Patrimoine. Tous droits réservés.</p>
+            <ul>
+                <li><a href="legal/mentions-legales.html">Mentions Légales</a></li>
+                <li><a href="legal/confidentialite.html">Politique de Confidentialité</a></li>
+                <li><a href="legal/cookies.html">Politique de Cookies</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/contact-form.js"></script>
+    <script src="../assets/js/map.js"></script>
 </body>
 </html>
