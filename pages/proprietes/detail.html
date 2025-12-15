@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Écuries de l'Aube - Fiche Détaillée - Hectares et Patrimoine</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css"> 
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="../../index.html">Hectares et Patrimoine</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">Accueil</a></li>
+                    <li class="active"><a href="liste.html">Nos Biens</a></li>
+                    <li><a href="../agence/equipe.html">L'Agence</a></li>
+                    <li><a href="../services/estimation.html">Services</a></li>
+                    <li><a href="../blog/index.html">Blog</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="detail-hero" class="container">
+            <div class="header-propriete">
+                <p class="retour-liste"><a href="liste.html">&larr; Retour à la liste</a></p>
+                <h1>Les Écuries de l'Aube (Réf. XXXXX)</h1>
+                <p class="localisation">📍 **Normandie** (Calvados, 14)</p>
+                <p class="prix">💰 **1 250 000 €** (Honoraires Inclus)</p>
+            </div>
+            
+            <div class="galerie-principale">
+                <img src="../../assets/images/proprietes/propriete-1-galerie-1.jpg" alt="Vue principale du domaine" class="image-principale">
+                
+                <div class="vignettes-photos">
+                    <img src="../../assets/images/proprietes/propriete-1-galerie-2.jpg" alt="Intérieur de l'écurie">
+                    <img src="../../assets/images/proprietes/propriete-1-galerie-3.jpg" alt="Vue aérienne par drone">
+                    <img src="../../assets/images/proprietes/propriete-1-galerie-4.jpg" alt="Intérieur de la maison">
+                </div>
+            </div>
+        </section>
+
+        <section id="caracteristiques-sommaire" class="container">
+            <h3>En bref</h3>
+            <div class="caracteristiques-grid">
+                <div class="caracteristique-item">
+                    <h5>Surface Habitable</h5>
+                    <p>180 m²</p>
+                </div>
+                <div class="caracteristique-item">
+                    <h5>Terres/Prairies</h5>
+                    <p>12.5 Hectares</p>
+                </div>
+                <div class="caracteristique-item">
+                    <h5>Boxes</h5>
+                    <p>15</p>
+                </div>
+                <div class="caracteristique-item">
+                    <h5>Prix FAI</h5>
+                    <p>1 250 000 €</p>
+                </div>
+                <div class="caracteristique-item">
+                    <h5>DPE</h5>
+                    <p>C (120 kWh/m².an)</p>
+                </div>
+                <div class="caracteristique-item">
+                    <h5>GES</h5>
+                    <p>D (25 kg CO2/m².an)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="description-complete" class="container two-columns-layout">
+            <div class="col-description">
+                <h3>Description Détaillée</h3>
+                
+                <h4>La Maison et les Habitations</h4>
+                <p>Charmante maison d'habitation de 180 m² entièrement rénovée en 2020, offrant une pièce de vie lumineuse de 50 m², 4 chambres spacieuses et deux salles de bain. Chauffage par pompe à chaleur. Possibilité d'aménager un logement de fonction indépendant de 40 m².</p>
+
+                <h4>Les Installations Équestres</h4>
+                <ul>
+                    <li>**15 Boxes** (3x3m) spacieux et bien ventilés.</li>
+                    <li>**Manège** 20x40m, éclairé, avec arrosage automatique.</li>
+                    <li>**Carrière** de dressage 60x20m, fibrée.</li>
+                    <li>**12.5 hectares** de prairies clôturées avec abris naturels, en parfait état (division possible en 8 paddocks).</li>
+                    <li>Sellerie, graineterie, aire de pansage couverte, et douche pour chevaux.</li>
+                </ul>
+
+                <h4>Environnement et Accès</h4>
+                <p>Situé à 15 minutes de [Ville Principale] et à 5 minutes des principaux axes autoroutiers. Cadre calme, sans nuisance, parfait pour une activité de commerce ou un usage privé de qualité.</p>
+
+            </div>
+            
+            <div class="col-contact">
+                <div class="contact-agent-box">
+                    <h4>Votre Contact Privilégié</h4>
+                    <img src="../../assets/images/team/agent-detail.jpg" alt="Photo de l'agent en charge du bien" class="agent-photo">
+                    <p class="agent-name">**[Nom Prénom de l'Agent]**</p>
+                    <p class="agent-role">Consultant Immobilier Équestre</p>
+                    <p>📞 [Numéro de Téléphone]</p>
+                    <p>✉️ [Email de l'Agent]</p>
+                    
+                    <form action="[URL_TRAITEMENT_VISITE]" method="POST" id="form-visite">
+                        <h5>Demander une visite ou des informations</h5>
+                        <input type="hidden" name="ref_bien" value="XXXXX">
+                        <div class="form-group">
+                            <input type="text" name="nom" placeholder="Votre Nom *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Votre Email *" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" rows="3" placeholder="Votre message... (Ex: Quand seriez-vous disponible pour une visite ?)"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Contacter l'Agent</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="localisation-map" class="container">
+            <h3>Localisation Géographique</h3>
+            <div class="map-placeholder">
+                
+                <p>La localisation exacte est communiquée uniquement après entretien et vérification du profil de l'acquéreur.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Hectares et Patrimoine. Tous droits réservés.</p>
+            <ul>
+                <li><a href="../legal/mentions-legales.html">Mentions Légales</a></li>
+                <li><a href="../legal/confidentialite.html">Politique de Confidentialité</a></li>
+                <li><a href="../legal/cookies.html">Politique de Cookies</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="../../assets/js/script.js"></script>
+</body>
+</html>
