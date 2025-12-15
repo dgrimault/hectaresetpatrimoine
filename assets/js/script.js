@@ -2,7 +2,7 @@
 // Hectares & Patrimoine - JavaScript
 // ========================================
 
-// Données des propriétés
+// Données des propriétés (Simulées)
 const properties = [
     {
         id: 1,
@@ -13,8 +13,8 @@ const properties = [
         rooms: 7,
         surface: 229,
         landSurface: 30,
-        image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
-        agent: { name: 'Nathalie GULLON-NEYRIN', avatar: 'https://i.pravatar.cc/150?img=1' },
+        image: '../../assets/images/proprietes/propriete-1.jpg',
+        agent: { name: 'Nathalie GULLON-NEYRIN', avatar: '../../assets/images/team/agent-1.jpg' },
         exclusive: false,
         status: 'available'
     },
@@ -27,8 +27,8 @@ const properties = [
         rooms: 16,
         surface: 400,
         landSurface: 10,
-        image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80',
-        agent: { name: 'Nicolas DALANCOURT', avatar: 'https://i.pravatar.cc/150?img=3' },
+        image: '../../assets/images/proprietes/propriete-2.jpg',
+        agent: { name: 'Nicolas DALANCOURT', avatar: '../../assets/images/team/agent-2.jpg' },
         exclusive: false,
         status: 'available',
         fees: '4.01% TTC'
@@ -42,8 +42,8 @@ const properties = [
         rooms: 5,
         surface: 143,
         landSurface: 8,
-        image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80',
-        agent: { name: 'Magali BADIER', avatar: 'https://i.pravatar.cc/150?img=5' },
+        image: '../../assets/images/proprietes/propriete-3.jpg',
+        agent: { name: 'Magali BADIER', avatar: '../../assets/images/team/agent-3.jpg' },
         exclusive: true,
         status: 'available',
         fees: '5% TTC'
@@ -57,8 +57,8 @@ const properties = [
         rooms: 7,
         surface: 220,
         landSurface: 8,
-        image: 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=800&q=80',
-        agent: { name: 'Nicolas DALANCOURT', avatar: 'https://i.pravatar.cc/150?img=3' },
+        image: '../../assets/images/proprietes/propriete-4.jpg',
+        agent: { name: 'Nicolas DALANCOURT', avatar: '../../assets/images/team/agent-2.jpg' },
         exclusive: false,
         status: 'available',
         fees: '4.84% TTC'
@@ -72,8 +72,8 @@ const properties = [
         rooms: 9,
         surface: 187,
         landSurface: 2.6,
-        image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
-        agent: { name: 'Nicolas DALANCOURT', avatar: 'https://i.pravatar.cc/150?img=3' },
+        image: '../../assets/images/proprietes/propriete-5.jpg',
+        agent: { name: 'Nicolas DALANCOURT', avatar: '../../assets/images/team/agent-2.jpg' },
         exclusive: false,
         status: 'sold'
     },
@@ -86,8 +86,8 @@ const properties = [
         rooms: 5,
         surface: 142,
         landSurface: 5,
-        image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80',
-        agent: { name: 'Nathalie GULLON-NEYRIN', avatar: 'https://i.pravatar.cc/150?img=1' },
+        image: '../../assets/images/proprietes/propriete-6.jpg',
+        agent: { name: 'Nathalie GULLON-NEYRIN', avatar: '../../assets/images/team/agent-1.jpg' },
         exclusive: false,
         status: 'available',
         fees: '4.88% TTC'
@@ -123,11 +123,16 @@ function toggleFavorite(id) {
     const index = favorites.indexOf(id);
     if (index > -1) {
         favorites.splice(index, 1);
+        trackEvent('Favoris', 'Suppression', `ID: ${id}`);
     } else {
         favorites.push(id);
+        trackEvent('Favoris', 'Ajout', `ID: ${id}`);
     }
     saveFavorites();
-    renderProperties();
+    // Re-rendre uniquement si nous sommes sur une page affichant les propriétés
+    if (document.getElementById('propertiesGrid')) {
+        renderProperties();
+    }
 }
 
 // ========================================
@@ -136,19 +141,23 @@ function toggleFavorite(id) {
 
 function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
-    menu.classList.toggle('hidden');
+    if (menu) {
+        menu.classList.toggle('hidden');
+    }
 }
 
 function toggleAdvanced() {
     const advanced = document.getElementById('advancedSearch');
     const text = document.getElementById('advancedText');
     
-    if (advanced.classList.contains('show')) {
-        advanced.classList.remove('show');
-        text.textContent = 'Plus de critères ▼';
-    } else {
-        advanced.classList.add('show');
-        text.textContent = 'Moins de critères ▲';
+    if (advanced && text) {
+        if (advanced.classList.contains('show')) {
+            advanced.classList.remove('show');
+            text.textContent = 'Plus de critères ▼';
+        } else {
+            advanced.classList.add('show');
+            text.textContent = 'Moins de critères ▲';
+        }
     }
 }
 
@@ -158,21 +167,23 @@ function setActiveTab(tab) {
     const btnSold = document.getElementById('btnSold');
     const sectionTitle = document.getElementById('sectionTitle');
     
-    if (tab === 'vente') {
-        btnVente.classList.add('active');
-        btnSold.classList.remove('active');
-        sectionTitle.textContent = 'Nos propriétés équestres à vendre';
-    } else {
-        btnSold.classList.add('active');
-        btnVente.classList.remove('active');
-        sectionTitle.textContent = 'Nos propriétés vendues';
+    // Mettre à jour les classes actives
+    if (btnVente && btnSold) {
+        if (tab === 'vente') {
+            btnVente.classList.add('active');
+            btnSold.classList.remove('active');
+        } else {
+            btnSold.classList.add('active');
+            btnVente.classList.remove('active');
+        }
+    }
+
+    if (sectionTitle) {
+        sectionTitle.textContent = (tab === 'vente') ? 'Nos propriétés équestres à vendre' : 'Nos propriétés vendues';
     }
     
     filterProperties();
-}
-
-function scrollToContact() {
-    document.querySelector('.cta-section').scrollIntoView({ behavior: 'smooth' });
+    trackEvent('Recherche', 'Changement Onglet', tab);
 }
 
 // ========================================
@@ -180,9 +191,12 @@ function scrollToContact() {
 // ========================================
 
 function filterProperties() {
-    const location = document.getElementById('searchLocation').value.toLowerCase();
-    const surfaceMin = parseInt(document.getElementById('searchSurface').value) || 0;
-    const budgetMax = parseInt(document.getElementById('searchBudget').value) || Infinity;
+    // Les champs de recherche existent uniquement sur index.html et pages/proprietes/liste.html
+    const location = document.getElementById('searchLocation')?.value.toLowerCase() || '';
+    const surfaceMin = parseInt(document.getElementById('searchSurface')?.value) || 0;
+    const budgetMax = parseInt(document.getElementById('searchBudget')?.value) || Infinity;
+    
+    // Critères avancés (disponibles uniquement sur index.html)
     const landMin = parseInt(document.getElementById('searchLandMin')?.value) || 0;
     const landMax = parseInt(document.getElementById('searchLandMax')?.value) || Infinity;
 
@@ -191,10 +205,12 @@ function filterProperties() {
         if (currentTab === 'sold' && prop.status !== 'sold') return false;
         if (currentTab === 'vente' && prop.status === 'sold') return false;
         
-        // Filtres de recherche
+        // Filtres de base
         if (location && !prop.city.toLowerCase().includes(location)) return false;
         if (prop.surface < surfaceMin) return false;
         if (prop.price > budgetMax && prop.price !== 0) return false;
+        
+        // Filtres avancés
         if (prop.landSurface < landMin) return false;
         if (prop.landSurface > landMax) return false;
         
@@ -209,16 +225,21 @@ function filterProperties() {
 // ========================================
 
 function renderProperties(filteredProps = properties) {
+    const grid = document.getElementById('propertiesGrid');
+    const count = document.getElementById('propertyCount');
+    
+    if (!grid) return; // Ne pas exécuter si nous ne sommes pas sur la page liste/index
+
     // Filtrer par onglet actif
     const filtered = filteredProps.filter(prop => {
         if (currentTab === 'sold') return prop.status === 'sold';
         return prop.status !== 'sold';
     });
-
-    const grid = document.getElementById('propertiesGrid');
-    const count = document.getElementById('propertyCount');
     
-    count.textContent = `${filtered.length} propriété(s) disponible(s)`;
+    if (count) {
+        count.textContent = `${filtered.length} propriété(s) ${currentTab === 'vente' ? 'disponible(s)' : 'vendue(s)'}`;
+    }
+
 
     if (filtered.length === 0) {
         grid.innerHTML = `
@@ -234,6 +255,11 @@ function renderProperties(filteredProps = properties) {
         `;
         return;
     }
+    
+    // Le chemin vers detail.html doit être ajusté en fonction de la page
+    // Depuis index.html, le chemin est pages/proprietes/detail.html
+    // Depuis pages/proprietes/liste.html, le chemin est detail.html
+    const detailPath = document.querySelector('body').classList.contains('page-index') ? 'pages/proprietes/detail.html' : 'detail.html';
 
     grid.innerHTML = filtered.map(prop => `
         <div class="property-card">
@@ -309,9 +335,9 @@ function renderProperties(filteredProps = properties) {
                     <span class="property-ref">Réf: ${prop.ref}</span>
                 </div>
 
-                <button class="btn-view-property" onclick="viewProperty('${prop.ref}')">
+                <a href="${detailPath}?ref=${prop.ref}" class="btn-view-property">
                     Voir le bien
-                </button>
+                </a>
             </div>
         </div>
     `).join('');
@@ -321,18 +347,72 @@ function renderProperties(filteredProps = properties) {
 // Actions sur les propriétés
 // ========================================
 
+// Fonction de simulation de redirection
 function viewProperty(ref) {
-    alert(`Ouverture de la propriété réf: ${ref}\n\nDans une version complète, cela redirigerait vers la page de détail.`);
-    // window.location.href = `/propriete/${ref}`;
+    // Dans la version production, nous utiliserions window.location.href = `proprietes/detail.html?ref=${ref}`;
+    console.log(`Ouverture de la propriété réf: ${ref}`);
 }
 
 // ========================================
-// Smooth scroll pour les ancres
+// Analytics
+// ========================================
+
+function trackEvent(category, action, label) {
+    console.log('Event:', category, action, label);
+}
+
+// ========================================
+// Initialisation
 // ========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialiser l'affichage
-    renderProperties();
+    
+    // --- 1. Ajout de la gestion des événements de l'UI ---
+    
+    // Boutons des onglets de recherche
+    const btnVente = document.getElementById('btnVente');
+    const btnSold = document.getElementById('btnSold');
+    if (btnVente) btnVente.addEventListener('click', () => setActiveTab('vente'));
+    if (btnSold) btnSold.addEventListener('click', () => setActiveTab('sold'));
+
+    // Bouton de menu mobile
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    if (mobileBtn) mobileBtn.addEventListener('click', toggleMobileMenu);
+
+    // Bouton de recherche avancée
+    const advancedToggle = document.getElementById('advancedToggle');
+    if (advancedToggle) advancedToggle.addEventListener('click', toggleAdvanced);
+
+    // Champs de recherche pour le filtrage en direct/après soumission
+    const searchForm = document.getElementById('searchForm');
+    if (searchForm) {
+        // Appliquer les filtres à la soumission du formulaire de recherche
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            filterProperties();
+            trackEvent('Recherche', 'Soumission Formulaire', 'Filtres appliqués');
+        });
+        
+        // Ou en direct pour les champs de la recherche rapide sur la page liste
+        const quickSearchInputs = document.querySelectorAll('#searchBox input, #searchBox select');
+        quickSearchInputs.forEach(input => {
+            input.addEventListener('change', filterProperties);
+            input.addEventListener('input', filterProperties); // Pour les saisies en temps réel
+        });
+    }
+
+    // --- 2. Initialisation de l'affichage ---
+    
+    // Ajout d'une classe au body pour gérer les chemins conditionnels (e.g. index.html vs pages/proprietes/liste.html)
+    if (document.body.classList.contains('page-index')) {
+        // Si c'est la page d'accueil, active l'onglet "vente" par défaut
+        setActiveTab('vente'); 
+    } else if (document.getElementById('propertiesGrid')) {
+        // Si c'est la page de liste de propriétés, initialiser l'affichage
+        setActiveTab(currentTab);
+    }
+    
+    // --- 3. Animations et Smooth Scroll ---
     
     // Smooth scroll pour tous les liens avec ancre
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -344,14 +424,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Fermer le menu mobile si ouvert
                 const mobileMenu = document.getElementById('mobileMenu');
-                if (!mobileMenu.classList.contains('hidden')) {
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                     toggleMobileMenu();
                 }
             }
         });
     });
     
-    // Animation au scroll
+    // Animation au scroll des cards de propriétés (Laisse votre logique telle quelle)
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -362,6 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target); // Stop observation une fois l'animation jouée
             }
         });
     }, observerOptions);
@@ -377,21 +458,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
 });
 
-// ========================================
-// Analytics (optionnel)
-// ========================================
-
-function trackEvent(category, action, label) {
-    // Google Analytics ou autre
-    console.log('Event:', category, action, label);
-    // gtag('event', action, { 'event_category': category, 'event_label': label });
-}
-
 // Exporter les fonctions globales pour l'usage inline dans le HTML
 window.toggleMobileMenu = toggleMobileMenu;
 window.toggleAdvanced = toggleAdvanced;
 window.setActiveTab = setActiveTab;
-window.scrollToContact = scrollToContact;
+window.scrollToContact = () => document.getElementById('contact-details')?.scrollIntoView({ behavior: 'smooth' });
 window.filterProperties = filterProperties;
 window.toggleFavorite = toggleFavorite;
 window.viewProperty = viewProperty;
