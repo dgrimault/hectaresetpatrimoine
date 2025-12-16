@@ -1,16 +1,246 @@
+<!--
+═══════════════════════════════════════════════════════════════════
+FICHIER : index.html
+EMPLACEMENT : /Hectaresetpatrimoine/ (racine)
+DESCRIPTION : Page d'accueil - Immobilier équestre d'exception
+VERSION : 2.0 - Complète et optimisée
+═══════════════════════════════════════════════════════════════════
+-->
+
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Hectares et Patrimoine - Spécialiste de l'immobilier équestre d'exception en France. Trouvez votre domaine, haras ou propriété rurale.">
-    <title>Hectares et Patrimoine - Immobilier Équestre d'Exception</title>
+    <meta name="keywords" content="immobilier équestre, propriété équestre, haras, domaine équestre, écurie, manège">
+    <meta name="author" content="Hectares et Patrimoine">
+
+```
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hectaresetpatrimoine.fr/">
+<meta property="og:title" content="Hectares et Patrimoine - Immobilier Équestre d'Exception">
+<meta property="og:description" content="Le réseau d'experts de l'immobilier équestre en France">
+<meta property="og:image" content="assets/images/og-image.jpg">
+
+<title>Hectares et Patrimoine - Immobilier Équestre d'Exception</title>
+
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏇</text></svg>">
+
+<style>
+    /* Styles complémentaires spécifiques à l'index */
+    .loading-spinner {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: #6b7280;
+        font-size: 1.125rem;
+    }
     
-    <link rel="stylesheet" href="assets/css/styles.css">
+    .loading-spinner::before {
+        content: '';
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border: 4px solid #e5e7eb;
+        border-top-color: #059669;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-right: 1rem;
+        vertical-align: middle;
+    }
     
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏇</text></svg>">
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+    
+    .btn-search {
+        width: 100%;
+        padding: 1rem 2rem;
+        background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+        color: white;
+        border: none;
+        border-radius: 0.75rem;
+        font-size: 1.125rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+        margin-top: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .btn-search:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
+    }
+    
+    .btn-search svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .btn-link {
+        color: #059669;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.15s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .btn-link:hover {
+        color: #047857;
+    }
+    
+    .btn-primary-mobile {
+        display: block;
+        width: 100%;
+        background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        font-weight: 600;
+        text-decoration: none;
+        margin-top: 0.5rem;
+    }
+    
+    #mobileMenu {
+        padding: 1rem 1.5rem;
+        border-top: 1px solid #d1fae5;
+        background: white;
+    }
+    
+    #mobileMenu nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    #mobileMenu a {
+        display: block;
+        padding: 0.75rem 0;
+        color: #374151;
+        text-decoration: none;
+        transition: color 0.15s;
+        font-weight: 500;
+    }
+    
+    #mobileMenu a:hover {
+        color: #059669;
+    }
+    
+    .expertise-section {
+        padding: 4rem 1.5rem;
+        background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+        margin: 4rem 0;
+        border-radius: 2rem;
+    }
+    
+    .features-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    @media (min-width: 768px) {
+        .features-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    
+    .feature-item {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s;
+    }
+    
+    .feature-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .feature-item h4 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 0.75rem;
+    }
+    
+    .feature-item p {
+        color: #6b7280;
+        line-height: 1.6;
+    }
+    
+    .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background: #f3f4f6;
+        border-radius: 50%;
+        transition: all 0.3s;
+    }
+    
+    .social-icon:hover {
+        background: #059669;
+        color: white;
+        transform: translateY(-3px);
+    }
+    
+    .footer-social-links {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+    
+    .footer-contact-social {
+        /* Styles spécifiques pour la dernière colonne du footer */
+    }
+    
+    .hero-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* Amélioration du message d'erreur si l'image ne charge pas */
+    .hero-image.error {
+        display: none;
+    }
+    
+    .no-properties {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 4rem 2rem;
+        color: #6b7280;
+    }
+    
+    .no-properties svg {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 1rem;
+        opacity: 0.5;
+    }
+</style>
+```
+
 </head>
-<body class="page-index"> <header class="header">
+<body class="page-index">
+    <!-- Header -->
+    <header class="header">
         <div class="header-container container">
             <div class="logo-wrapper">
                 <div class="logo-icon">
@@ -24,225 +254,323 @@
                 </div>
             </div>
 
-            <nav class="nav-desktop">
-                <a href="pages/proprietes/liste.html">Nos propriétés</a>
-                <a href="pages/agence/exclusivite.html">Exclusivité</a>
-                <a href="pages/agence/equipe.html">Notre équipe</a>
-                <a href="pages/blog/index.html">Conseils</a>
-                <button class="btn-primary" onclick="window.location.href='pages/contact.html'">Contact</button>
-            </nav>
+```
+        <nav class="nav-desktop">
+            <a href="pages/proprietes/liste.html">Nos propriétés</a>
+            <a href="pages/agence/exclusivite.html">Exclusivité</a>
+            <a href="pages/agence/equipe.html">Notre équipe</a>
+            <a href="pages/blog/index.html">Conseils</a>
+            <button class="btn-primary" onclick="window.location.href='pages/contact.html'">Contact</button>
+        </nav>
 
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu mobile">
-                <svg id="menuIcon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Ouvrir le menu mobile">
+            <svg id="menuIcon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </div>
 
-       <div id="mobileMenu" class="hidden">
-            <nav> 
-                <a href="pages/proprietes/liste.html">Nos propriétés</a>
-                <a href="pages/agence/exclusivite.html">Exclusivité</a>
-                <a href="pages/agence/equipe.html">Notre équipe</a>
-                <a href="pages/blog/index.html">Conseils</a>
-                <a href="pages/contact.html" class="btn-primary-mobile">Contactez-nous</a>
-            </nav>
-        </div>
-    </header>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden">
+        <nav> 
+            <a href="pages/proprietes/liste.html">Nos propriétés</a>
+            <a href="pages/agence/exclusivite.html">Exclusivité</a>
+            <a href="pages/agence/equipe.html">Notre équipe</a>
+            <a href="pages/blog/index.html">Conseils</a>
+            <a href="pages/contact.html" class="btn-primary-mobile">Contactez-nous</a>
+        </nav>
+    </div>
+</header>
 
-    <main>
-        <section class="hero">
-            <div class="hero-overlay"></div>
-            <img 
-                src="assets/images/hero-equestre.jpg" 
-                alt="Propriété équestre de prestige"
-                class="hero-image"
-            />
-            <div class="hero-content container">
-                <div class="hero-inner">
-                    <h2 class="hero-title">Votre Propriété Équestre</h2>
-                    <p class="hero-subtitle">Le réseau d'experts de l'immobilier équestre d'exception en France</p>
+<!-- Main Content -->
+<main>
+    <!-- Hero Section -->
+    <section class="hero" role="banner">
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <img 
+            src="assets/images/hero-equestre.jpg" 
+            alt="Propriété équestre de prestige avec manège et prairies"
+            class="hero-image"
+            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80'; this.classList.add('error');"
+            loading="eager"
+        />
+        <div class="hero-content container">
+            <div class="hero-inner">
+                <h2 class="hero-title">Votre Propriété Équestre</h2>
+                <p class="hero-subtitle">Le réseau d'experts de l'immobilier équestre d'exception en France</p>
 
-                    <form id="searchForm" class="search-box">
-                        <div class="search-tabs">
-                            <button type="button" onclick="setActiveTab('vente')" id="btnVente" class="search-tab active">
-                                Acheter
-                            </button>
-                            <button type="button" onclick="setActiveTab('sold')" id="btnSold" class="search-tab">
-                                Biens vendus
-                            </button>
-                        </div>
-
-                        <div id="searchBox" class="search-grid">
-                            <input
-                                type="text"
-                                id="searchLocation"
-                                placeholder="📍 Localisation (Ville)"
-                                class="search-input"
-                            />
-                            
-                            <input
-                                type="number"
-                                id="searchSurface"
-                                placeholder="📐 Surface min (m²)"
-                                class="search-input"
-                            />
-                            
-                            <input
-                                type="number"
-                                id="searchBudget"
-                                placeholder="💰 Budget max (€)"
-                                class="search-input"
-                            />
-                        </div>
-
-                        <button type="button" onclick="toggleAdvanced()" class="advanced-toggle" id="advancedToggle">
-                            <span id="advancedText">Plus de critères ▼</span>
+                <!-- Search Form -->
+                <form id="searchForm" class="search-box" onsubmit="handleSearch(event)">
+                    <div class="search-tabs" role="tablist">
+                        <button 
+                            type="button" 
+                            onclick="setActiveTab('vente')" 
+                            id="btnVente" 
+                            class="search-tab active"
+                            role="tab"
+                            aria-selected="true"
+                            aria-controls="searchBox"
+                        >
+                            Acheter
                         </button>
-
-                        <div id="advancedSearch" class="advanced-search">
-                            <input
-                                type="number"
-                                id="searchLandMin"
-                                placeholder="🌾 Terrain min (hectares)"
-                                class="search-input"
-                            />
-                            <input
-                                type="number"
-                                id="searchLandMax"
-                                placeholder="🌾 Terrain max (hectares)"
-                                class="search-input"
-                            />
-                        </div>
-
-                        <button type="submit" class="btn-search">Rechercher</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <section class="properties-section container" id="proprietes">
-            <div class="properties-header">
-                <div>
-                    <h3 class="properties-title" id="sectionTitle">
-                        Nos propriétés équestres à vendre
-                    </h3>
-                    <p class="properties-count" id="propertyCount">Chargement...</p>
-                </div>
-                <a href="pages/proprietes/liste.html" class="btn-link">Voir toutes les propriétés &rarr;</a>
-            </div>
-
-            <div id="propertiesGrid" class="properties-grid">
-                </div>
-        </section>
-
-        <section class="cta-section" id="estimation-vente">
-            <div class="container">
-                <h3 class="cta-title">
-                    Vous souhaitez vendre votre propriété équestre ?
-                </h3>
-                <p class="cta-description">
-                    Bénéficiez de notre expertise et de notre réseau spécialisé pour valoriser votre bien au meilleur prix.
-                </p>
-                <div class="cta-buttons">
-                    <a href="pages/services/estimation.html" class="btn-secondary">Estimer mon bien</a>
-                    <a href="pages/services/alerte.html" class="btn-tertiary">Créer une alerte achat</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="expertise-section container">
-            <h3 class="section-title">Notre Expertise au service de votre Passion</h3>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <h4>Réseau Spécialisé</h4>
-                    <p>Un portefeuille d'acheteurs qualifiés ciblant exclusivement l'immobilier équestre.</p>
-                </div>
-                <div class="feature-item">
-                    <h4>Valorisation Technique</h4>
-                    <p>Nous comprenons et mettons en valeur les infrastructures (manèges, carrières, terres, paddocks).</p>
-                </div>
-                <div class="feature-item">
-                    <h4>Accompagnement Complet</h4>
-                    <p>De l'estimation juridique à l'acte final, notre équipe vous guide pas à pas.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-container container">
-            <div class="footer-grid">
-                <div>
-                    <div class="footer-brand">
-                        <div class="footer-brand-icon">
-                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                            </svg>
-                        </div>
-                        <h4>Hectares & Patrimoine</h4>
+                        <button 
+                            type="button" 
+                            onclick="setActiveTab('sold')" 
+                            id="btnSold" 
+                            class="search-tab"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="searchBox"
+                        >
+                            Biens vendus
+                        </button>
                     </div>
-                    <p class="footer-description">
-                        Spécialiste de l'immobilier équestre depuis plus de 10 ans. Nous vous accompagnons dans tous vos projets.
-                    </p>
-                </div>
 
-                <div>
-                    <h5 class="footer-title">Nos services</h5>
-                    <ul class="footer-links">
-                        <li><a href="pages/proprietes/liste.html">Acheter</a></li>
-                        <li><a href="pages/services/estimation.html">Vendre</a></li>
-                        <li><a href="pages/services/estimation.html">Estimer</a></li>
-                        <li><a href="pages/services/financement.html">Financement</a></li>
-                        <li><a href="pages/blog/index.html">Nos conseils</a></li>
-                    </ul>
-                </div>
+                    <div id="searchBox" class="search-grid" role="tabpanel">
+                        <input
+                            type="text"
+                            id="searchLocation"
+                            name="location"
+                            placeholder="📍 Localisation (Ville)"
+                            class="search-input"
+                            aria-label="Recherche par localisation"
+                        />
+                        
+                        <input
+                            type="number"
+                            id="searchSurface"
+                            name="surfaceMin"
+                            placeholder="📐 Surface min (m²)"
+                            class="search-input"
+                            min="0"
+                            aria-label="Surface minimale en mètres carrés"
+                        />
+                        
+                        <input
+                            type="number"
+                            id="searchBudget"
+                            name="budgetMax"
+                            placeholder="💰 Budget max (€)"
+                            class="search-input"
+                            min="0"
+                            step="1000"
+                            aria-label="Budget maximum en euros"
+                        />
+                    </div>
 
-                <div>
-                    <h5 class="footer-title">L'agence</h5>
-                    <ul class="footer-links">
-                        <li><a href="pages/agence/equipe.html">Notre équipe</a></li>
-                        <li><a href="pages/agence/ambassadeurs.html">Nos ambassadeurs</a></li>
-                        <li><a href="pages/agence/exclusivite.html">Pourquoi l'exclusivité</a></li>
-                        <li><a href="pages/legal/mentions-legales.html">Nos honoraires</a></li>
-                    </ul>
-                </div>
+                    <button 
+                        type="button" 
+                        onclick="toggleAdvanced()" 
+                        class="advanced-toggle" 
+                        id="advancedToggle"
+                        aria-expanded="false"
+                        aria-controls="advancedSearch"
+                    >
+                        <span id="advancedText">Plus de critères ▼</span>
+                    </button>
 
-                <div class="footer-contact-social">
-                    <h5 class="footer-title">Contact</h5>
-                    <ul class="footer-links">
-                        <li>📍 4 Grand Rue<br>44118 La Chevrolière</li>
-                        <li>📞 02 40 00 00 00</li>
-                        <li>✉️ contact@hectaresetpatrimoine.fr</li>
-                        <li><a href="pages/contact.html">Formulaire de contact</a></li>
-                    </ul>
-                </div>
-            </div>
+                    <div id="advancedSearch" class="advanced-search" aria-hidden="true">
+                        <input
+                            type="number"
+                            id="searchLandMin"
+                            name="landMin"
+                            placeholder="🌾 Terrain min (hectares)"
+                            class="search-input"
+                            min="0"
+                            step="0.1"
+                            aria-label="Surface terrain minimale en hectares"
+                        />
+                        <input
+                            type="number"
+                            id="searchLandMax"
+                            name="landMax"
+                            placeholder="🌾 Terrain max (hectares)"
+                            class="search-input"
+                            min="0"
+                            step="0.1"
+                            aria-label="Surface terrain maximale en hectares"
+                        />
+                    </div>
 
-            <div class="footer-bottom">
-                <p>© 2025 Hectares et Patrimoine. Tous droits réservés.</p>
-                
-                <div class="footer-social-links">
-                    <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" class="social-icon">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.568-4 0v5.604h-3v-11h3v1.765c1.395-2.002 4-2.25 4 1.258v7.977z"/></svg>
-                    </a>
-                    <a href="https://facebook.com" aria-label="Facebook" target="_blank" class="social-icon">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .733.593 1.324 1.325 1.324h11.495v-9.294h-3.091v-3.622h3.091v-2.193c0-3.067 1.859-4.72 4.562-4.72 1.302 0 2.45.097 2.775.14v3.218h-1.921c-1.503 0-1.794.717-1.794 1.777v2.333h3.585l-.467 3.622h-3.118v9.294h6.142c.732 0 1.325-.592 1.325-1.324v-21.351c0-.732-.593-1.325-1.325-1.325z"/></svg>
-                    </a>
-                    <a href="https://instagram.com" aria-label="Instagram" target="_blank" class="social-icon">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07c1.472.066 2.164.316 2.656.516.516.208.974.482 1.408.916.434.434.708.892.916 1.408.2.492.45 1.184.516 2.656.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.066 1.472-.316 2.164-.516 2.656-.208.516-.482.974-.916 1.408-.434.434-.892.708-1.408.916-.492.2-1.184.45-2.656.516-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.472-.066-2.164-.316-2.656-.516-.516-.208-.974-.482-1.408-.916-.434-.434-.708-.892-.916-1.408-.2-.492-.45-1.184-.516-2.656-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.066-1.472.316-2.164.516-2.656.208-.516.482-.974.916-1.408.434-.434.892-.708 1.408-.916.492-.2 1.184-.45 2.656-.516 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.265 0-3.666.014-4.947.072-1.442.065-2.48.33-3.414.706-.826.332-1.488.887-2.148 1.547-.66.66-.995 1.322-1.547 2.148-.376.934-.641 1.972-.706 3.414-.058 1.281-.072 1.682-.072 4.947s.014 3.666.072 4.947c.065 1.442.33 2.48.706 3.414.332.826.887 1.488 1.547 2.148.66.66 1.322.995 2.148 1.547.934.376 1.972.641 3.414.706 1.281.058 1.682.072 4.947.072s3.666-.014 4.947-.072c1.442-.065 2.48-.33 3.414-.706.826-.332 1.488-.887 2.148-1.547.66-.66.995-1.322 1.547-2.148.376-.934.641-1.972.706-3.414.058-1.281.072-1.682.072-4.947s-.014-3.666-.072-4.947c-.065-1.442-.33-2.48-.706-3.414-.332-.826-.887-1.488-1.547-2.148-.66-.66-1.322-.995-2.148-1.547-.934-.376-1.972-.641-3.414-.706-1.281-.058-1.682-.072-4.947-.072zM12 7.163c2.65 0 4.837 2.187 4.837 4.837s-2.187 4.837-4.837 4.837-4.837-2.187-4.837-4.837 2.187-4.837 4.837-4.837zm0-2.163c-3.87 0-7 3.13-7 7s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm6.495-.913c0 1.054-.852 1.906-1.906 1.906s-1.906-.852-1.906-1.906.852-1.906 1.906-1.906 1.906.852 1.906 1.906z"/></svg>
-                    </a>
-                </div>
-                
-                <div class="footer-legal">
-                    <a href="pages/legal/mentions-legales.html">Mentions légales</a>
-                    <a href="pages/legal/confidentialite.html">Confidentialité</a>
-                    <a href="pages/legal/cookies.html">Cookies</a>
-                </div>
+                    <button type="submit" class="btn-search">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        Rechercher
+                    </button>
+                </form>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <script src="assets/js/script.js"></script> 
+    <!-- Properties Section -->
+    <section class="properties-section container" id="proprietes" aria-labelledby="sectionTitle">
+        <div class="properties-header">
+            <div>
+                <h3 class="properties-title" id="sectionTitle">
+                    Nos propriétés équestres à vendre
+                </h3>
+                <p class="properties-count" id="propertyCount">Chargement des propriétés...</p>
+            </div>
+            <a href="pages/proprietes/liste.html" class="btn-link">
+                Voir toutes les propriétés 
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+
+        <div id="propertiesGrid" class="properties-grid" role="list">
+            <div class="loading-spinner" role="status" aria-live="polite">
+                Chargement des propriétés...
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="estimation-vente">
+        <div class="container">
+            <h3 class="cta-title">
+                Vous souhaitez vendre votre propriété équestre ?
+            </h3>
+            <p class="cta-description">
+                Bénéficiez de notre expertise et de notre réseau spécialisé pour valoriser votre bien au meilleur prix.
+            </p>
+            <div class="cta-buttons">
+                <a href="pages/services/estimation.html" class="btn-secondary">Estimer mon bien</a>
+                <a href="pages/services/alerte.html" class="btn-tertiary">Créer une alerte achat</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="expertise-section container">
+        <h3 class="section-title">Notre Expertise au service de votre Passion</h3>
+        <div class="features-grid">
+            <div class="feature-item">
+                <h4>🎯 Réseau Spécialisé</h4>
+                <p>Un portefeuille d'acheteurs qualifiés ciblant exclusivement l'immobilier équestre.</p>
+            </div>
+            <div class="feature-item">
+                <h4>🏇 Valorisation Technique</h4>
+                <p>Nous comprenons et mettons en valeur les infrastructures (manèges, carrières, terres, paddocks).</p>
+            </div>
+            <div class="feature-item">
+                <h4>🤝 Accompagnement Complet</h4>
+                <p>De l'estimation juridique à l'acte final, notre équipe vous guide pas à pas.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container container">
+        <div class="footer-grid">
+            <!-- Brand Column -->
+            <div>
+                <div class="footer-brand">
+                    <div class="footer-brand-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                    </div>
+                    <h4>Hectares & Patrimoine</h4>
+                </div>
+                <p class="footer-description">
+                    Spécialiste de l'immobilier équestre depuis plus de 10 ans. Nous vous accompagnons dans tous vos projets.
+                </p>
+            </div>
+
+            <!-- Services Column -->
+            <div>
+                <h5 class="footer-title">Nos services</h5>
+                <ul class="footer-links">
+                    <li><a href="pages/proprietes/liste.html">Acheter</a></li>
+                    <li><a href="pages/services/estimation.html">Vendre</a></li>
+                    <li><a href="pages/services/estimation.html">Estimer</a></li>
+                    <li><a href="pages/services/financement.html">Financement</a></li>
+                    <li><a href="pages/blog/index.html">Nos conseils</a></li>
+                </ul>
+            </div>
+
+            <!-- Agency Column -->
+            <div>
+                <h5 class="footer-title">L'agence</h5>
+                <ul class="footer-links">
+                    <li><a href="pages/agence/equipe.html">Notre équipe</a></li>
+                    <li><a href="pages/agence/ambassadeurs.html">Nos ambassadeurs</a></li>
+                    <li><a href="pages/agence/exclusivite.html">Pourquoi l'exclusivité</a></li>
+                    <li><a href="pages/legal/mentions-legales.html">Nos honoraires</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Column -->
+            <div class="footer-contact-social">
+                <h5 class="footer-title">Contact</h5>
+                <ul class="footer-links">
+                    <li>📍 4 Grand Rue<br>44118 La Chevrolière</li>
+                    <li>📞 <a href="tel:0240000000">02 40 00 00 00</a></li>
+                    <li>✉️ <a href="mailto:contact@hectaresetpatrimoine.fr">contact@hectaresetpatrimoine.fr</a></li>
+                    <li><a href="pages/contact.html">Formulaire de contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>© 2025 Hectares et Patrimoine. Tous droits réservés.</p>
+            
+            <div class="footer-social-links">
+                <a href="https://linkedin.com/company/hectaresetpatrimoine" aria-label="Suivez-nous sur LinkedIn" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.568-4 0v5.604h-3v-11h3v1.765c1.395-2.002 4-2.25 4 1.258v7.977z"/></svg>
+                </a>
+                <a href="https://facebook.com/hectaresetpatrimoine" aria-label="Suivez-nous sur Facebook" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .733.593 1.324 1.325 1.324h11.495v-9.294h-3.091v-3.622h3.091v-2.193c0-3.067 1.859-4.72 4.562-4.72 1.302 0 2.45.097 2.775.14v3.218h-1.921c-1.503 0-1.794.717-1.794 1.777v2.333h3.585l-.467 3.622h-3.118v9.294h6.142c.732 0 1.325-.592 1.325-1.324v-21.351c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                </a>
+                <a href="https://instagram.com/hectaresetpatrimoine" aria-label="Suivez-nous sur Instagram" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07c1.472.066 2.164.316 2.656.516.516.208.974.482 1.408.916.434.434.708.892.916 1.408.2.492.45 1.184.516 2.656.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.066 1.472-.316 2.164-.516 2.656-.208.516-.482.974-.916 1.408-.434.434-.892.708-1.408.916-.492.2-1.184.45-2.656.516-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.472-.066-2.164-.316-2.656-.516-.516-.208-.974-.482-1.408-.916-.434-.434-.708-.892-.916-1.408-.2-.492-.45-1.184-.516-2.656-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.066-1.472.316-2.164.516-2.656.208-.516.482-.974.916-1.408.434-.434.892-.708 1.408-.916.492-.2 1.184-.45 2.656-.516 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.265 0-3.666.014-4.947.072-1.442.065-2.48.33-3.414.706-.826.332-1.488.887-2.148 1.547-.66.66-.995 1.322-1.547 2.148-.376.934-.641 1.972-.706 3.414-.058 1.281-.072 1.682-.072 4.947s.014 3.666.072 4.947c.065 1.442.33 2.48.706 3.414.332.826.887 1.488 1.547 2.148.66.66 1.322.995 2.148 1.547.934.376 1.972.641 3.414.706 1.281.058 1.682.072 4.947.072s3.666-.014 4.947-.072c1.442-.065 2.48-.33 3.414-.706.826-.332 1.488-.887 2.148-1.547.66-.66.995-1.322 1.547-2.148.376-.934.641-1.972.706-3.414.058-1.281.072-1.682.072-4.947s-.014-3.666-.072-4.947c-.065-1.442-.33-2.48-.706-3.414-.332-.826-.887-1.488-1.547-2.148-.66-.66-1.322-.995-2.148-1.547-.934-.376-1.972-.641-3.414-.706-1.281-.058-1.682-.072-4.947-.072zM12 7.163c2.65 0 4.837 2.187 4.837 4.837s-2.187 4.837-4.837 4.837-4.837-2.187-4.837-4.837 2.187-4.837 4.837-4.837zm0-2.163c-3.87 0-7 3.13-7 7s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm6.495-.913c0 1.054-.852 1.906-1.906 1.906s-1.906-.852-1.906-1.906.852-1.906 1.906-1.906 1.906.852 1.906 1.906z"/></svg>
+                </a>
+            </div>
+            
+            <div class="footer-legal">
+                <a href="pages/legal/mentions-legales.html">Mentions légales</a>
+                <a href="pages/legal/confidentialite.html">Confidentialité</a>
+                <a href="pages/legal/cookies.html">Cookies</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="assets/js/script.js"></script>
+
+<!-- Script inline pour fonctions critiques -->
+<script>
+    // Fonction de recherche
+    function handleSearch(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const params = new URLSearchParams();
+        
+        for (let [key, value] of formData.entries()) {
+            if (value) params.append(key, value);
+        }
+        
+        window.location.href = `pages/proprietes/liste.html?${params.toString()}`;
+    }
+    
+    // Gestion de l'erreur d'image hero
+    document.addEventListener('DOMContentLoaded', function() {
+        const heroImg = document.querySelector('.hero-image');
+        if (heroImg) {
+            heroImg.addEventListener('error', function() {
+                console.warn('Image hero non trouvée, chargement de l\'image de fallback');
+            });
+        }
+    });
+</script>
+```
+
 </body>
 </html>
